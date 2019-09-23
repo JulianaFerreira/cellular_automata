@@ -1,0 +1,40 @@
+mounth: 1
+cells susceptible: 3559
+cells infected: 755
+cells with symptoms: 486
+young: 1151 
+young woman infected: 262 
+young man infected: 0 
+----------------------------
+mounth: 2
+cells susceptible: 3417
+cells infected: 897
+cells with symptoms: 486
+young: 1151 
+young woman infected: 265 
+young man infected: 1 
+----------------------------
+mounth: 3
+cells susceptible: 3346
+cells infected: 968
+cells with symptoms: 486
+young: 1151 
+young woman infected: 270 
+young man infected: 8 
+----------------------------
+mounth: 4
+cells susceptible: 3299
+cells infected: 1015
+cells with symptoms: 486
+young: 1151 
+young woman infected: 271 
+young man infected: 12 
+----------------------------
+mounth: 5
+cells susceptible: 3257
+cells infected: 1057
+cells with symptoms: 486
+young: 1151 
+young woman infected: 278 
+young man infected: 18 
+----------------------------
