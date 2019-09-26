@@ -248,4 +248,4 @@ if __name__ == '__main__':
     #  Create an app object
     #  Cell Size: higher it is. the faster the computer updates canvas (doesn't matter about amount of cells, just size)
     #  ^I don't know why
-    app = App(1000, 25, tolerance=0.7)
+    app = App(600, 10, tolerance=0.7)

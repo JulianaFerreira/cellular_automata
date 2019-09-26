@@ -6,7 +6,7 @@ import copy
 from tkinter import *
 
 # Total population, N.
-N = 10000
+N = 4800
 # Initial number of infected and recovered individuals, I0 and R0.
 I0, R0 = 1, 0
 # Everyone else, S0, is susceptible to infection initially.
@@ -14,7 +14,7 @@ S0 = N - I0 - R0
 # Contact rate, beta, and mean recovery rate, gamma, (in 1/days).
 beta, gamma = 0.3, 0.1
 # A grid of time points (in days)
-time = 120
+time = 100
 t = np.linspace(0, time, time)
 
 # The SIR model differential equations.
@@ -38,7 +38,7 @@ ax.plot(t, S/N, 'b', alpha=0.5, lw=2, label='Susceptible')
 ax.plot(t, I/N, 'r', alpha=0.5, lw=2, label='Infected')
 ax.plot(t, R/N, 'g', alpha=0.5, lw=2, label='Recovered with immunity')
 ax.set_xlabel('Time /days')
-ax.set_ylabel('Number (10000s)')
+ax.set_ylabel('Number (4800s)')
 ax.set_ylim(0,1.2)
 ax.yaxis.set_tick_params(length=0)
 ax.xaxis.set_tick_params(length=0)
@@ -48,11 +48,10 @@ legend.get_frame().set_alpha(0.5)
 for spine in ('top', 'right', 'bottom', 'left'):
     ax.spines[spine].set_visible(False)
 plt.show()
+plt.savefig('myplot.png')
 
 
-
-
-#TODO Automato
+#------------AUTOMATO---------------
 class Cell:
 
     def __init__(self, time, state):
@@ -113,28 +112,19 @@ def processing():
 
             if firstGen[x][y].getstate() == 0:
                 cells_state_0 += 1
-                temporary[x][y] = copy.copy(firstGen[x][y])
-                temporary[x][y].setstate(
-                    getNewState2D(firstGen[x][y].getstate(), infected_neighbors_state1, infected_neighbors_state2))
-                temporary[x][y].settime(temporary[x][y].gettime() + 1)
-
             elif firstGen[x][y].getstate() == 1:
                 cells_state_1 += 1
-                temporary[x][y] = copy.copy(firstGen[x][y])
-                temporary[x][y].setstate(
-                    getNewState2D(firstGen[x][y].getstate(), infected_neighbors_state1, infected_neighbors_state2))
-                temporary[x][y].settime(firstGen[x][y].gettime() + 1)
-
             elif firstGen[x][y].getstate() == 2:
                 cells_state_2 += 1
-                temporary[x][y] = copy.copy(firstGen[x][y])
-                temporary[x][y].setstate(
-                    getNewState2D(firstGen[x][y].getstate(), infected_neighbors_state1, infected_neighbors_state2))
-                temporary[x][y].settime(temporary[x][y].gettime() + 1)
+
+            temporary[x][y] = copy.copy(firstGen[x][y])
+            temporary[x][y].setstate(
+                getNewState2D(firstGen[x][y].getstate(), infected_neighbors_state1, infected_neighbors_state2))
+            temporary[x][y].settime(temporary[x][y].gettime() + 1)
 
 
-    archive = open("info.txt", "a")
-    archive2 = open("info.txt", "r")
+    archive = open("ac.txt", "a")
+    archive2 = open("ac.txt", "r")
     content = archive2.readlines()
     number_of_lines = len(content)
     archive.write("mounth: %d" % ((number_of_lines / 8) + 1) + "\n")
@@ -164,7 +154,7 @@ def getNewState2D(selfCharacter,infected_neighbors_state1,infected_neighbors_sta
     newState = selfCharacter
 
     if selfCharacter == 0: # If S and there is an Infected close, be Infected
-        if infected_neighbors_state1 > 0 or infected_neighbors_state2 > 0:
+        if infected_neighbors_state1 > 1 or infected_neighbors_state2 > 1:
             betaChance = getRandomNumber(0)
             if betaChance < beta and betaChance > 0:
                 newState = 1
