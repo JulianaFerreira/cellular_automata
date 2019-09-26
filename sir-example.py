@@ -1,6 +1,6 @@
 import matplotlib.pylab as plt
 
-N = 1000000
+N = 1000
 S = N - 1
 I = 1
 R = 0
@@ -26,12 +26,12 @@ infection(S, I, R, N)
 figure = plt.figure()
 figure.canvas.set_window_title('Compartimental model')
 
-inf_line, = plt.plot(inf, label='I(t)')
-
 sus_line, = plt.plot(sus, label='S(t)')
 
+inf_line, = plt.plot(inf, label='I(t)')
+
 rec_line, = plt.plot(rec, label='R(t)')
-plt.legend(handles=[inf_line, sus_line, rec_line])
+plt.legend(handles=[sus_line,inf_line, rec_line])
 
 plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 

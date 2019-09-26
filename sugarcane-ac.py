@@ -53,7 +53,7 @@ def put_cells():
         for x in range(-1, 81):
             firstGen[x][y] = random.choice(aleatory_cells)
             temporary[x][y] = 0
-            cell[x][y] = canvas.create_oval((x * 10, y * 10, x * 10 + 10, y * 10 + 10), outline="gray50", fill="white")
+            cell[x][y] = canvas.create_rectangle((x * 10, y * 10, x * 10 + 10, y * 10 + 10), outline="gray50", fill="white")
 
 
 def processing():
