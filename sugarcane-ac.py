@@ -36,7 +36,8 @@ temporary = [[0 for row in range(-1, 61)] for col in range(-1, 81)]
 def make_frames():
     processing()
     paint_cells()
-    root.after(1000, make_frames)
+    root.update()
+    #root.after(1000, make_frames)
 
 
 def put_cells():
@@ -69,26 +70,48 @@ def processing():
             temporary[x][y] = copy.copy(firstGen[x][y])
             temporary[x][y].settime(temporary[x][y].gettime() + 15)
 
+            #setphase
+            if firstGen[x][y].getphase() == 30:
+                firstGen[x][y].setphase(1)
+
+            elif firstGen[x][y].getphase() == 150:
+                firstGen[x][y].setphase(2)
+
+            elif firstGen[x][y].getphase() == 270:
+                firstGen[x][y].setphase(3)
+
+            elif firstGen[x][y].getphase() == 480:
+                firstGen[x][y].setphase(4)
+
+
+            #setstate
             if firstGen[x][y].getstate() == 0:
                 cells_state_0 += 1
-                if (neighbors_state1 > 3 or neighbors_state2 > 2) and firstGen[x][y].getphase() == 0:
+                if (neighbors_state1 > 3 or neighbors_state2 > 2): #and firstGen[x][y].getphase() == 0:
                     temporary[x][y].setstate(1)
-                elif neighbors_state1 > 4 or neighbors_state2 > 3:
+                elif neighbors_state1 > 2 or neighbors_state2 > 3:
                     temporary[x][y].setstate(2)
 
             elif firstGen[x][y].getstate() == 1:
                 cells_state_1 += 1
-                temporary[x][y].setstate(2)
+                if neighbors_state0 > 4:  # and firstGen[x][y].getphase() == 0:
+                    temporary[x][y].setstate(0)
+                elif neighbors_state0 > 2 or neighbors_state2 > 3:
+                    temporary[x][y].setstate(2)
 
             elif firstGen[x][y].getstate() == 2:
                 cells_state_2 += 1
-                temporary[x][y].setstate(1)
+                if neighbors_state0 > 4:  # and firstGen[x][y].getphase() == 0:
+                    temporary[x][y].setstate(0)
+                elif neighbors_state0 > 2 or neighbors_state1 > 3:
+                    temporary[x][y].setstate(1)
+
 
     archive = open("ac.txt", "a")
     archive2 = open("ac.txt", "r")
     content = archive2.readlines()
     number_of_lines = len(content)
-    archive.write("mounth: %d" % ((number_of_lines / 8) + 1) + "\n")
+    archive.write("dias: %d" % temporary[0][0].gettime() + "\n")
     archive.write("cells good: %d" % cells_state_0 + "\n")
     archive.write("cells medium: %d" % cells_state_1 + "\n")
     archive.write("cells bad: %d" % cells_state_2 + "\n")
@@ -204,5 +227,7 @@ canvas = Canvas(root, width=800, height=600, highlightthickness=0, bd=0, bg='whi
 canvas.pack()
 put_cells()
 
-make_frames()
+for x in range(0, 32):
+    make_frames()
+
 root.mainloop()
