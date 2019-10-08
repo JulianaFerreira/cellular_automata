@@ -2,7 +2,6 @@ from tkinter import *
 import random
 import copy
 
-
 class Cell:
 
     def __init__(self, time, state, phase):
@@ -63,51 +62,30 @@ def processing():
 
     for y in range(0, 60):
         for x in range(0, 80):
-            infected_neighbors_state1 = search_neigh_state1(x, y)
-            infected_neighbors_state2 = search_neigh_state2(x, y)
-            aleatory_cells = [Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 0, 0),
-                              Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 1, 0), Cell(0, 2, 0),
-                              Cell(0, 0, 0), Cell(0, 1, 0), Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 0, 0),
-                              Cell(0, 1, 0), Cell(0, 0, 0), Cell(0, 1, 0), Cell(0, 0, 0), Cell(0, 1, 0)]
+            neighbors_state0 = search_state0(x, y)
+            neighbors_state1 = search_state1(x, y)
+            neighbors_state2 = search_state2(x, y)
 
+            temporary[x][y] = copy.copy(firstGen[x][y])
+            temporary[x][y].settime(temporary[x][y].gettime() + 15)
 
-            if firstGen[x][y].gettime() > 12:
-                temporary[x][y] = random.choice(aleatory_cells)
+            if firstGen[x][y].getstate() == 0:
+                cells_state_0 += 1
+                if (neighbors_state1 > 3 or neighbors_state2 > 2) and firstGen[x][y].getphase() == 0:
+                    temporary[x][y].setstate(1)
+                elif neighbors_state1 > 4 or neighbors_state2 > 3:
+                    temporary[x][y].setstate(2)
 
-            else:
-                if firstGen[x][y].getstate() == 0:
-                    cells_state_0 += 1
-                    if (infected_neighbors_state1 > 3 or infected_neighbors_state2 > 2):
-                        temporary[x][y] = copy.copy(firstGen[x][y])
-                        temporary[x][y].setstate(1)
-                    elif infected_neighbors_state1 > 4 or infected_neighbors_state2 > 3:
-                        temporary[x][y] = copy.copy(firstGen[x][y])
-                        temporary[x][y].setstate(1)
-                    else:
-                        temporary[x][y] = copy.copy(firstGen[x][y])
+            elif firstGen[x][y].getstate() == 1:
+                cells_state_1 += 1
+                temporary[x][y].setstate(2)
 
-                elif firstGen[x][y].getstate() == 1:
-                    cells_state_1 += 1
-                    if firstGen[x][y].gettime() == 5:
-                        temporary[x][y] = copy.copy(firstGen[x][y])
-                        temporary[x][y].setstate(2)
-                        temporary[x][y].settime(firstGen[x][y].gettime() + 1)
-                    else:
-                        temporary[x][y] = copy.copy(firstGen[x][y])
-                        temporary[x][y].settime(temporary[x][y].gettime() + 1)
+            elif firstGen[x][y].getstate() == 2:
+                cells_state_2 += 1
+                temporary[x][y].setstate(1)
 
-                elif firstGen[x][y].getstate() == 2:
-                    cells_state_2 += 1
-                    if firstGen[x][y].gettime() > 8:
-                        temporary[x][y] = copy.copy(firstGen[x][y])
-                        temporary[x][y].setstate(1)
-                        temporary[x][y].settime(temporary[x][y].gettime() + 1)
-                    else:
-                        temporary[x][y] = copy.copy(firstGen[x][y])
-                        temporary[x][y].settime(temporary[x][y].gettime() + 1)
-
-    archive = open("info.txt", "a")
-    archive2 = open("info.txt", "r")
+    archive = open("ac.txt", "a")
+    archive2 = open("ac.txt", "r")
     content = archive2.readlines()
     number_of_lines = len(content)
     archive.write("mounth: %d" % ((number_of_lines / 8) + 1) + "\n")
@@ -121,64 +99,93 @@ def processing():
             firstGen[x][y] = temporary[x][y]
 
 
-def search_neigh_state1(a, b):
-    neigh_state1 = 0
+def search_state0(a, b):
+    state0 = 0
+
+    if firstGen[a - 1][b + 1].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a][b + 1].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a + 1][b + 1].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a - 1][b].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a + 1][b].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a - 1][b - 1].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a][b - 1].getstate() == 0:
+        state0 += 1
+
+    if firstGen[a + 1][b - 1].getstate() == 0:
+        state0 += 1
+
+    return state0
+
+def search_state1(a, b):
+    state1 = 0
 
     if firstGen[a - 1][b + 1].getstate() == 1:
-        neigh_state1 += 1
+        state1 += 1
 
     if firstGen[a][b + 1].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
     if firstGen[a + 1][b + 1].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
     if firstGen[a - 1][b].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
     if firstGen[a + 1][b].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
     if firstGen[a - 1][b - 1].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
     if firstGen[a][b - 1].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
     if firstGen[a + 1][b - 1].getstate() == 1:
-        neigh_state1 = neigh_state1 + 1
+        state1 += 1
 
-    return neigh_state1
+    return state1
 
 
-def search_neigh_state2(a, b):
-    neigh_state2 = 0
+def search_state2(a, b):
+    state2 = 0
 
     if firstGen[a - 1][b + 1].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a][b + 1].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a + 1][b + 1].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a - 1][b].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a + 1][b].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a - 1][b - 1].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a][b - 1].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
     if firstGen[a + 1][b - 1].getstate() == 2:
-        neigh_state2 += 1
+        state2 += 1
 
-    return neigh_state2
+    return state2
 
 
 def paint_cells():
