@@ -7,8 +7,12 @@ from PIL import Image, ImageGrab
 
 #test
 import numpy as np
-# Transition rate
+
+# Transition rate quality: beta - next state, gamma - state before
 beta, gamma = 0.3, 0.1
+
+# Transition rate temp
+sun, rain = 0.5, 0.5
 
 #Size
 width = 60
@@ -16,10 +20,11 @@ height = 80
 
 class Cell:
 
-    def __init__(self, time, state, phase):
+    def __init__(self, time, state, phase):#put weather
         self.time = time
         self.state = state
         self.phase = phase
+        #self.weather = weather
 
     def gettime(self):
         return self.time
@@ -39,8 +44,15 @@ class Cell:
     def setphase(self, phase):
         self.phase = phase
 
+    def getweather(self):
+        return self.weather
+
+    def setweather(self, weather):
+        self.weather = weather
+
+
 cell = [[0 for row in range(-1, width+1)] for col in range(-1, height+1)]
-firstGen = [[0 for row in range(-1, width+1)] for col in range(-1, height+1)]
+previousGen = [[0 for row in range(-1, width + 1)] for col in range(-1, height + 1)]
 temporary = [[0 for row in range(-1, width+1)] for col in range(-1, height+1)]
 
 
@@ -55,7 +67,8 @@ def put_cells():
     # state: 0 = good, 1 = medium, 2 = bad, 3 = dead
     # quality score: good: 7-10; medium: 5-7; bad: 0-5
     # phase: 0 = bud, 1 = tillering, 2 = grow, 3 = mature, 4 = harvest, 5 = dead
-    # Good - 9; Medium - 10; Bad - 1
+    # weather: 0 = rain, 1 = sun
+    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1
     aleatory_cells = [Cell(0, 1, 0), Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 1, 0), Cell(0, 0, 0),
                       Cell(0, 1, 0), Cell(0, 0, 0), Cell(0, 1, 0), Cell(0, 1, 0), Cell(0, 2, 0),
                       Cell(0, 0, 0), Cell(0, 1, 0), Cell(0, 0, 0), Cell(0, 0, 0), Cell(0, 0, 0),
@@ -63,7 +76,7 @@ def put_cells():
 
     for y in range(-1, width+1):
         for x in range(-1, height+1):
-            firstGen[x][y] = random.choice(aleatory_cells)
+            previousGen[x][y] = random.choice(aleatory_cells)
             temporary[x][y] = 0
             cell[x][y] = canvas.create_rectangle((x * 10, y * 10, x * 10 + 10, y * 10 + 10), outline="gray50", fill="white")
 
@@ -76,54 +89,62 @@ def processing():
 
     for y in range(0, width):
         for x in range(0, height):
-            neighbors_state0 = search_state0(x, y)
-            neighbors_state1 = search_state1(x, y)
-            neighbors_state2 = search_state2(x, y)
+            neighbors_state0 = search_state(0, x, y)
+            neighbors_state1 = search_state(1, x, y)
+            neighbors_state2 = search_state(2, x, y)
 
-            temporary[x][y] = copy.copy(firstGen[x][y])
+            temporary[x][y] = copy.copy(previousGen[x][y])
             temporary[x][y].settime(temporary[x][y].gettime() + 15)
 
             #setphase
-            if firstGen[x][y].getphase() == 30:
-                firstGen[x][y].setphase(1)
+            if previousGen[x][y].getphase() == 30:
+                previousGen[x][y].setphase(1)
 
-            elif firstGen[x][y].getphase() == 150:
-                firstGen[x][y].setphase(2)
+            elif previousGen[x][y].getphase() == 150:
+                previousGen[x][y].setphase(2)
 
-            elif firstGen[x][y].getphase() == 270:
-                firstGen[x][y].setphase(3)
+            elif previousGen[x][y].getphase() == 270:
+                previousGen[x][y].setphase(3)
 
-            elif firstGen[x][y].getphase() == 480:
-                firstGen[x][y].setphase(4)
+            elif previousGen[x][y].getphase() == 480:
+                previousGen[x][y].setphase(4)
+
+
+
+            #setweather
+
+
+
+
 
 
             #statistic
-            #temporary[x][y].setstate(getNewState2D(firstGen[x][y].getstate(), infected_neighbors_state1, infected_neighbors_state2))
+            #temporary[x][y].setstate(getNewState2D(previousGen[x][y].getstate(), infected_neighbors_state1, infected_neighbors_state2))
 
             #setstate
-            if firstGen[x][y].getstate() == 0:
+            if previousGen[x][y].getstate() == 0:
                 cells_state_0 += 1
                 temporary[x][y].setstate(
-                    getNewState2D(firstGen[x][y].getstate(), neighbors_state1, neighbors_state2))
-                if neighbors_state1 > 4: #and firstGen[x][y].getphase() == 0:
+                    getNewState2D(previousGen[x][y].getstate(), neighbors_state1, neighbors_state2))
+                if neighbors_state1 > 4: #and previousGen[x][y].getphase() == 0:
                     temporary[x][y].setstate(0) #1
                 elif neighbors_state2 > 5:
                     temporary[x][y].setstate(0)#2
 
-            elif firstGen[x][y].getstate() == 1:
+            elif previousGen[x][y].getstate() == 1:
                 cells_state_1 += 1
                 temporary[x][y].setstate(
-                    getNewState2D(firstGen[x][y].getstate(), neighbors_state0, neighbors_state2))
-                if neighbors_state0 > 4:  # or neighbors_state2 > 3:and firstGen[x][y].getphase() == 0:
+                    getNewState2D(previousGen[x][y].getstate(), neighbors_state0, neighbors_state2))
+                if neighbors_state0 > 4:  # or neighbors_state2 > 3:and previousGen[x][y].getphase() == 0:
                     temporary[x][y].setstate(1)#0
                 elif neighbors_state2 > 5:
                     temporary[x][y].setstate(1)#2
 
-            elif firstGen[x][y].getstate() == 2:
+            elif previousGen[x][y].getstate() == 2:
                 cells_state_2 += 1
                 temporary[x][y].setstate(
-                    getNewState2D(firstGen[x][y].getstate(), neighbors_state1, neighbors_state2))
-                if neighbors_state0 > 6:  # and firstGen[x][y].getphase() == 0:
+                    getNewState2D(previousGen[x][y].getstate(), neighbors_state1, neighbors_state2))
+                if neighbors_state0 > 6:  # and previousGen[x][y].getphase() == 0:
                     temporary[x][y].setstate(2)#0
                 elif neighbors_state1 > 5:
                     temporary[x][y].setstate(2)#1
@@ -144,96 +165,38 @@ def processing():
 
     for y in range(0, width):
         for x in range(0, height):
-            firstGen[x][y] = temporary[x][y]
+            previousGen[x][y] = temporary[x][y]
 
 
-def search_state0(a, b):
-    state0 = 0
+def search_state(state, a, b):
+    count = 0
 
-    if firstGen[a - 1][b + 1].getstate() == 0:
-        state0 += 1
+    if previousGen[a - 1][b + 1].getstate() == state:
+        count += 1
 
-    if firstGen[a][b + 1].getstate() == 0:
-        state0 += 1
+    if previousGen[a][b + 1].getstate() == state:
+        count += 1
 
-    if firstGen[a + 1][b + 1].getstate() == 0:
-        state0 += 1
+    if previousGen[a + 1][b + 1].getstate() == state:
+        count += 1
 
-    if firstGen[a - 1][b].getstate() == 0:
-        state0 += 1
+    if previousGen[a - 1][b].getstate() == state:
+        count += 1
 
-    if firstGen[a + 1][b].getstate() == 0:
-        state0 += 1
+    if previousGen[a + 1][b].getstate() == state:
+        count += 1
 
-    if firstGen[a - 1][b - 1].getstate() == 0:
-        state0 += 1
+    if previousGen[a - 1][b - 1].getstate() == state:
+        count += 1
 
-    if firstGen[a][b - 1].getstate() == 0:
-        state0 += 1
+    if previousGen[a][b - 1].getstate() == state:
+        count += 1
 
-    if firstGen[a + 1][b - 1].getstate() == 0:
-        state0 += 1
+    if previousGen[a + 1][b - 1].getstate() == state:
+        count += 1
 
-    return state0
+    return count
 
-def search_state1(a, b):
-    state1 = 0
-
-    if firstGen[a - 1][b + 1].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a][b + 1].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a + 1][b + 1].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a - 1][b].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a + 1][b].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a - 1][b - 1].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a][b - 1].getstate() == 1:
-        state1 += 1
-
-    if firstGen[a + 1][b - 1].getstate() == 1:
-        state1 += 1
-
-    return state1
-
-
-def search_state2(a, b):
-    state2 = 0
-
-    if firstGen[a - 1][b + 1].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a][b + 1].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a + 1][b + 1].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a - 1][b].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a + 1][b].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a - 1][b - 1].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a][b - 1].getstate() == 2:
-        state2 += 1
-
-    if firstGen[a + 1][b - 1].getstate() == 2:
-        state2 += 1
-
-    return state2
 
 def getRandomNumber(distribution):
     if distribution == 0:
@@ -246,7 +209,6 @@ def getRandomNumber(distribution):
         returningRandomNumber = np.random.poisson(2) * .1 # POISSON
     return returningRandomNumber
 
-''' This method calculates the new state of the cell based on Moore neighborhood '''
 def getNewState2D(selfCharacter,neighbors_state1,neighbors_state2):
     newState = selfCharacter
 
@@ -280,13 +242,13 @@ def getNewState2D(selfCharacter,neighbors_state1,neighbors_state2):
 def paint_cells():
     for y in range(width):
         for x in range(height):
-            if firstGen[x][y].getstate() == 0:
+            if previousGen[x][y].getstate() == 0:
                 canvas.itemconfig(cell[x][y], fill="green")
-            elif firstGen[x][y].getstate() == 1:
+            elif previousGen[x][y].getstate() == 1:
                 canvas.itemconfig(cell[x][y], fill="yellow")
-            elif firstGen[x][y].getstate() == 2:
+            elif previousGen[x][y].getstate() == 2:
                 canvas.itemconfig(cell[x][y], fill="red")
-            elif firstGen[x][y].getstate() == 3:
+            elif previousGen[x][y].getstate() == 3:
                 canvas.itemconfig(cell[x][y], fill="black")
 
 
