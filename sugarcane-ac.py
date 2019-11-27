@@ -10,7 +10,7 @@ import numpy as np
 
 # Transition quality
 beta = 0.3 #next state
-gamma = 0.1 #state before
+gamma = 0.3 #state before
 
 # Transition weather
 sun, rain = 0.7, 0.2
@@ -130,17 +130,17 @@ def processing():
             if previousGen[x][y].getstate() == 0:
                 cells_state_0 += 1
                 temporary[x][y].setstate(
-                    getNewQuality(previousGen[x][y].getstate(), neighbors_state1, neighbors_state2))
+                    getNewQuality(previousGen[x][y].getstate(), previousGen[x][y].getweather(), neighbors_state1, neighbors_state2))
 
             elif previousGen[x][y].getstate() == 1:
                 cells_state_1 += 1
                 temporary[x][y].setstate(
-                    getNewQuality(previousGen[x][y].getstate(), neighbors_state0, neighbors_state2))
+                    getNewQuality(previousGen[x][y].getstate(), previousGen[x][y].getweather(), neighbors_state0, neighbors_state2))
 
             elif previousGen[x][y].getstate() == 2:
                 cells_state_2 += 1
                 temporary[x][y].setstate(
-                    getNewQuality(previousGen[x][y].getstate(), neighbors_state1, neighbors_state2))
+                    getNewQuality(previousGen[x][y].getstate(), previousGen[x][y].getweather(), neighbors_state1, neighbors_state2))
 
             elif previousGen[x][y].getstate() == 3:
                 cells_state_3 += 1
@@ -198,7 +198,7 @@ def search_state(state, a, b):
 def search_weather(state, a, b):
     count = 0
 
-    if previousGen[a - 1][b + 1].getweather() == state or previousGen[a][b + 1].getweather() == state:
+    if previousGen[a - 1][b + 1].getweather() == state:
         count += 1
 
     if previousGen[a][b + 1].getweather() == state:
@@ -232,43 +232,50 @@ def getRandomNumber(distribution):
         returningRandomNumber = np.random.normal(.5, .1) # NORMAL
     return returningRandomNumber
 
-def getNewQuality(selfCharacter, neighbors_state1, neighbors_state2):
-    newState = selfCharacter
+def getNewQuality(quality, weather, neighbors_state1, neighbors_state2):
+    newBeta = beta
+    newGamma = gamma
+    newState = quality
     chance = getRandomNumber(0)
 
-    if selfCharacter == 0: # If G
+    if weather == 0:
+        newBeta = newBeta + 0.1
+    if weather == 1:
+        newGamma = newGamma + 0.1
+
+    if quality == 0: # If G
         if neighbors_state1 > 5 or neighbors_state2 > 6: #M or B close
-            if chance < beta and chance > 0:
+            if chance < newBeta and chance > 0:
                 newState = 1
 
-    elif selfCharacter == 1: # If M
+    elif quality == 1: # If M
         if neighbors_state1 > 4:  # G close
-            if chance < gamma and chance > 0:
+            if chance < newGamma and chance > 0:
                 newState = 0
         elif neighbors_state2 > 5:  # B close
-            if chance < beta and chance > 0:
+            if chance < newBeta and chance > 0:
                 newState = 2
 
-    elif selfCharacter == 2: # If B
+    elif quality == 2: # If B
         if neighbors_state1 > 4:  # G close
-            if chance < gamma and chance > 0:
+            if chance < newGamma and chance > 0:
                 newState = 1
         elif neighbors_state2 > 5:  # B close
-            if chance < beta and chance > 0:
+            if chance < newBeta and chance > 0:
                 newState = 3
 
     return newState
 
-def getNewWeather(selfCharacter, neighbors_state):
-    newState = selfCharacter
+def getNewWeather(weather, neighbors_state):
+    newState = weather
     chance = getRandomNumber(0)
 
-    if selfCharacter == 0: # If Sun
+    if weather == 0: # If Sun
         if neighbors_state > 4:
             if chance < rain and chance > 0:
                 newState = 1
 
-    elif selfCharacter == 1: # If Rain
+    elif weather == 1: # If Rain
         if neighbors_state > 2:
             if chance < sun and chance > 0:
                 newState = 0
