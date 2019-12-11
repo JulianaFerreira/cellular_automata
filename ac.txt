@@ -1,1370 +1,320 @@
-mounth: 1
-cells susceptible: 4559
-cells infected: 241
-cells recovered: 0
-----------------------------
-mounth: 1
-cells susceptible: 4481
-cells infected: 287
-cells recovered: 32
-----------------------------
-mounth: 2
-cells susceptible: 4380
-cells infected: 355
-cells recovered: 65
-----------------------------
-mounth: 2
-cells susceptible: 4238
-cells infected: 459
-cells recovered: 103
-----------------------------
-mounth: 3
-cells susceptible: 4084
-cells infected: 559
-cells recovered: 157
-----------------------------
-mounth: 4
-cells susceptible: 3891
-cells infected: 690
-cells recovered: 219
-----------------------------
-mounth: 4
-cells susceptible: 3690
-cells infected: 817
-cells recovered: 293
-----------------------------
-mounth: 5
-cells susceptible: 3477
-cells infected: 957
-cells recovered: 366
-----------------------------
-mounth: 6
-cells susceptible: 3245
-cells infected: 1088
-cells recovered: 467
-----------------------------
-mounth: 6
-cells susceptible: 3026
-cells infected: 1201
-cells recovered: 573
-----------------------------
-mounth: 7
-cells susceptible: 2775
-cells infected: 1332
-cells recovered: 693
-----------------------------
-mounth: 7
-cells susceptible: 2537
-cells infected: 1438
-cells recovered: 825
-----------------------------
-mounth: 8
-cells susceptible: 2268
-cells infected: 1583
-cells recovered: 949
-----------------------------
-mounth: 9
-cells susceptible: 1993
-cells infected: 1707
-cells recovered: 1100
-----------------------------
-mounth: 9
-cells susceptible: 1733
-cells infected: 1782
-cells recovered: 1285
-----------------------------
-mounth: 10
-cells susceptible: 1502
-cells infected: 1826
-cells recovered: 1472
-----------------------------
-mounth: 11
-cells susceptible: 1274
-cells infected: 1885
-cells recovered: 1641
-----------------------------
-mounth: 11
-cells susceptible: 1086
-cells infected: 1871
-cells recovered: 1843
-----------------------------
-mounth: 12
-cells susceptible: 945
-cells infected: 1835
-cells recovered: 2020
-----------------------------
-mounth: 12
-cells susceptible: 824
-cells infected: 1771
-cells recovered: 2205
-----------------------------
-mounth: 13
-cells susceptible: 697
-cells infected: 1728
-cells recovered: 2375
-----------------------------
-mounth: 14
-cells susceptible: 588
-cells infected: 1684
-cells recovered: 2528
-----------------------------
-mounth: 14
-cells susceptible: 506
-cells infected: 1601
-cells recovered: 2693
-----------------------------
-mounth: 15
-cells susceptible: 425
-cells infected: 1532
-cells recovered: 2843
-----------------------------
-mounth: 16
-cells susceptible: 351
-cells infected: 1469
-cells recovered: 2980
-----------------------------
-mounth: 16
-cells susceptible: 294
-cells infected: 1382
-cells recovered: 3124
-----------------------------
-mounth: 17
-cells susceptible: 257
-cells infected: 1265
-cells recovered: 3278
-----------------------------
-mounth: 17
-cells susceptible: 216
-cells infected: 1160
-cells recovered: 3424
-----------------------------
-mounth: 18
-cells susceptible: 176
-cells infected: 1108
-cells recovered: 3516
-----------------------------
-mounth: 19
-cells susceptible: 148
-cells infected: 1007
-cells recovered: 3645
-----------------------------
-mounth: 19
-cells susceptible: 119
-cells infected: 927
-cells recovered: 3754
-----------------------------
-mounth: 20
-cells susceptible: 96
-cells infected: 853
-cells recovered: 3851
-----------------------------
-mounth: 21
-cells susceptible: 76
-cells infected: 792
-cells recovered: 3932
-----------------------------
-mounth: 21
-cells susceptible: 61
-cells infected: 718
-cells recovered: 4021
-----------------------------
-mounth: 22
-cells susceptible: 50
-cells infected: 656
-cells recovered: 4094
-----------------------------
-mounth: 22
-cells susceptible: 33
-cells infected: 612
-cells recovered: 4155
-----------------------------
-mounth: 23
-cells susceptible: 25
-cells infected: 566
-cells recovered: 4209
-----------------------------
-mounth: 24
-cells susceptible: 22
-cells infected: 514
-cells recovered: 4264
-----------------------------
-mounth: 24
-cells susceptible: 18
-cells infected: 470
-cells recovered: 4312
-----------------------------
-mounth: 25
-cells susceptible: 13
-cells infected: 412
-cells recovered: 4375
-----------------------------
-mounth: 26
-cells susceptible: 8
-cells infected: 384
-cells recovered: 4408
-----------------------------
-mounth: 26
-cells susceptible: 5
-cells infected: 344
-cells recovered: 4451
-----------------------------
-mounth: 27
-cells susceptible: 1
-cells infected: 322
-cells recovered: 4477
-----------------------------
-mounth: 27
-cells susceptible: 0
-cells infected: 301
-cells recovered: 4499
-----------------------------
-mounth: 28
-cells susceptible: 0
-cells infected: 269
-cells recovered: 4531
-----------------------------
-mounth: 29
-cells susceptible: 0
-cells infected: 246
-cells recovered: 4554
-----------------------------
-mounth: 29
-cells susceptible: 0
-cells infected: 226
-cells recovered: 4574
-----------------------------
-mounth: 30
-cells susceptible: 0
-cells infected: 199
-cells recovered: 4601
-----------------------------
-mounth: 31
-cells susceptible: 0
-cells infected: 174
-cells recovered: 4626
-----------------------------
-mounth: 31
-cells susceptible: 0
-cells infected: 162
-cells recovered: 4638
-----------------------------
-mounth: 32
-cells susceptible: 0
-cells infected: 139
-cells recovered: 4661
-----------------------------
-mounth: 32
-cells susceptible: 0
-cells infected: 121
-cells recovered: 4679
-----------------------------
-mounth: 33
-cells susceptible: 0
-cells infected: 111
-cells recovered: 4689
-----------------------------
-mounth: 34
-cells susceptible: 0
-cells infected: 100
-cells recovered: 4700
-----------------------------
-mounth: 34
-cells susceptible: 0
-cells infected: 83
-cells recovered: 4717
-----------------------------
-mounth: 35
-cells susceptible: 0
-cells infected: 77
-cells recovered: 4723
-----------------------------
-mounth: 36
-cells susceptible: 0
-cells infected: 66
-cells recovered: 4734
-----------------------------
-mounth: 36
-cells susceptible: 0
-cells infected: 58
-cells recovered: 4742
-----------------------------
-mounth: 37
-cells susceptible: 0
-cells infected: 51
-cells recovered: 4749
-----------------------------
-mounth: 37
-cells susceptible: 0
-cells infected: 46
-cells recovered: 4754
-----------------------------
-mounth: 38
-cells susceptible: 0
-cells infected: 42
-cells recovered: 4758
-----------------------------
-mounth: 39
-cells susceptible: 0
-cells infected: 37
-cells recovered: 4763
-----------------------------
-mounth: 39
-cells susceptible: 0
-cells infected: 34
-cells recovered: 4766
-----------------------------
-mounth: 40
-cells susceptible: 0
-cells infected: 30
-cells recovered: 4770
-----------------------------
-mounth: 41
-cells susceptible: 0
-cells infected: 27
-cells recovered: 4773
-----------------------------
-mounth: 41
-cells susceptible: 0
-cells infected: 22
-cells recovered: 4778
-----------------------------
-mounth: 42
-cells susceptible: 0
-cells infected: 20
-cells recovered: 4780
-----------------------------
-mounth: 42
-cells susceptible: 0
-cells infected: 17
-cells recovered: 4783
-----------------------------
-mounth: 43
-cells susceptible: 0
-cells infected: 16
-cells recovered: 4784
-----------------------------
-mounth: 44
-cells susceptible: 0
-cells infected: 14
-cells recovered: 4786
-----------------------------
-mounth: 44
-cells susceptible: 0
-cells infected: 11
-cells recovered: 4789
-----------------------------
-mounth: 45
-cells susceptible: 0
-cells infected: 11
-cells recovered: 4789
-----------------------------
-mounth: 46
-cells susceptible: 0
-cells infected: 10
-cells recovered: 4790
-----------------------------
-mounth: 46
-cells susceptible: 0
-cells infected: 9
-cells recovered: 4791
-----------------------------
-mounth: 47
-cells susceptible: 0
-cells infected: 9
-cells recovered: 4791
-----------------------------
-mounth: 47
-cells susceptible: 0
-cells infected: 9
-cells recovered: 4791
-----------------------------
-mounth: 48
-cells susceptible: 0
-cells infected: 9
-cells recovered: 4791
-----------------------------
-mounth: 49
-cells susceptible: 0
-cells infected: 7
-cells recovered: 4793
-----------------------------
-mounth: 49
-cells susceptible: 0
-cells infected: 7
-cells recovered: 4793
-----------------------------
-mounth: 50
-cells susceptible: 0
-cells infected: 6
-cells recovered: 4794
-----------------------------
-mounth: 51
-cells susceptible: 0
-cells infected: 6
-cells recovered: 4794
-----------------------------
-mounth: 51
-cells susceptible: 0
-cells infected: 6
-cells recovered: 4794
-----------------------------
-mounth: 52
-cells susceptible: 0
-cells infected: 5
-cells recovered: 4795
-----------------------------
-mounth: 52
-cells susceptible: 0
-cells infected: 5
-cells recovered: 4795
-----------------------------
-mounth: 53
-cells susceptible: 0
-cells infected: 5
-cells recovered: 4795
-----------------------------
-mounth: 54
-cells susceptible: 0
-cells infected: 5
-cells recovered: 4795
-----------------------------
-mounth: 54
-cells susceptible: 0
-cells infected: 5
-cells recovered: 4795
-----------------------------
-mounth: 55
-cells susceptible: 0
-cells infected: 5
-cells recovered: 4795
-----------------------------
-mounth: 56
-cells susceptible: 0
-cells infected: 4
-cells recovered: 4796
-----------------------------
-mounth: 56
-cells susceptible: 0
-cells infected: 4
-cells recovered: 4796
-----------------------------
-mounth: 57
-cells susceptible: 0
-cells infected: 4
-cells recovered: 4796
-----------------------------
-mounth: 57
-cells susceptible: 0
-cells infected: 4
-cells recovered: 4796
-----------------------------
-mounth: 58
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 59
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 59
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 60
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 61
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 61
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 62
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 62
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 63
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 64
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 64
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 65
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 66
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 66
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 67
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 67
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 68
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 69
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 69
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 70
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 71
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 71
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 72
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 72
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 73
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 74
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 74
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 75
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 76
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 76
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 77
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 77
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 78
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 79
-cells susceptible: 4559
-cells infected: 241
-cells recovered: 0
-----------------------------
-mounth: 79
-cells susceptible: 4485
-cells infected: 298
-cells recovered: 17
-----------------------------
-mounth: 80
-cells susceptible: 4398
-cells infected: 343
-cells recovered: 59
-----------------------------
-mounth: 81
-cells susceptible: 4279
-cells infected: 432
-cells recovered: 89
-----------------------------
-mounth: 81
-cells susceptible: 4139
-cells infected: 531
-cells recovered: 130
-----------------------------
-mounth: 82
-cells susceptible: 3967
-cells infected: 644
-cells recovered: 189
-----------------------------
-mounth: 82
-cells susceptible: 3770
-cells infected: 773
-cells recovered: 257
-----------------------------
-mounth: 83
-cells susceptible: 3560
-cells infected: 919
-cells recovered: 321
-----------------------------
-mounth: 84
-cells susceptible: 3346
-cells infected: 1055
-cells recovered: 399
-----------------------------
-mounth: 84
-cells susceptible: 3152
-cells infected: 1127
-cells recovered: 521
-----------------------------
-mounth: 85
-cells susceptible: 2924
-cells infected: 1227
-cells recovered: 649
-----------------------------
-mounth: 86
-cells susceptible: 2692
-cells infected: 1347
-cells recovered: 761
-----------------------------
-mounth: 86
-cells susceptible: 2450
-cells infected: 1445
-cells recovered: 905
-----------------------------
-mounth: 87
-cells susceptible: 2226
-cells infected: 1531
-cells recovered: 1043
-----------------------------
-mounth: 87
-cells susceptible: 2000
-cells infected: 1595
-cells recovered: 1205
-----------------------------
-mounth: 88
-cells susceptible: 1786
-cells infected: 1650
-cells recovered: 1364
-----------------------------
-mounth: 89
-cells susceptible: 1585
-cells infected: 1684
-cells recovered: 1531
-----------------------------
-mounth: 89
-cells susceptible: 1394
-cells infected: 1706
-cells recovered: 1700
-----------------------------
-mounth: 90
-cells susceptible: 1209
-cells infected: 1715
-cells recovered: 1876
-----------------------------
-mounth: 91
-cells susceptible: 1052
-cells infected: 1699
-cells recovered: 2049
-----------------------------
-mounth: 91
-cells susceptible: 894
-cells infected: 1681
-cells recovered: 2225
-----------------------------
-mounth: 92
-cells susceptible: 730
-cells infected: 1684
-cells recovered: 2386
-----------------------------
-mounth: 92
-cells susceptible: 594
-cells infected: 1680
-cells recovered: 2526
-----------------------------
-mounth: 93
-cells susceptible: 476
-cells infected: 1633
-cells recovered: 2691
-----------------------------
-mounth: 94
-cells susceptible: 380
-cells infected: 1568
-cells recovered: 2852
-----------------------------
-mounth: 94
-cells susceptible: 298
-cells infected: 1484
-cells recovered: 3018
-----------------------------
-mounth: 95
-cells susceptible: 231
-cells infected: 1406
-cells recovered: 3163
-----------------------------
-mounth: 96
-cells susceptible: 182
-cells infected: 1322
-cells recovered: 3296
-----------------------------
-mounth: 96
-cells susceptible: 146
-cells infected: 1247
-cells recovered: 3407
-----------------------------
-mounth: 97
-cells susceptible: 113
-cells infected: 1138
-cells recovered: 3549
-----------------------------
-mounth: 97
-cells susceptible: 82
-cells infected: 1058
-cells recovered: 3660
-----------------------------
-mounth: 98
-cells susceptible: 61
-cells infected: 974
-cells recovered: 3765
-----------------------------
-mounth: 99
-cells susceptible: 45
-cells infected: 891
-cells recovered: 3864
-----------------------------
-mounth: 99
-cells susceptible: 33
-cells infected: 807
-cells recovered: 3960
-----------------------------
-mounth: 100
-cells susceptible: 22
-cells infected: 746
-cells recovered: 4032
-----------------------------
-mounth: 101
-cells susceptible: 14
-cells infected: 676
-cells recovered: 4110
-----------------------------
-mounth: 101
-cells susceptible: 9
-cells infected: 617
-cells recovered: 4174
-----------------------------
-mounth: 102
-cells susceptible: 5
-cells infected: 555
-cells recovered: 4240
-----------------------------
-mounth: 102
-cells susceptible: 3
-cells infected: 499
-cells recovered: 4298
-----------------------------
-mounth: 103
-cells susceptible: 2
-cells infected: 452
-cells recovered: 4346
-----------------------------
-mounth: 104
-cells susceptible: 2
-cells infected: 408
-cells recovered: 4390
-----------------------------
-mounth: 104
-cells susceptible: 2
-cells infected: 360
-cells recovered: 4438
-----------------------------
-mounth: 105
-cells susceptible: 2
-cells infected: 326
-cells recovered: 4472
-----------------------------
-mounth: 106
-cells susceptible: 2
-cells infected: 295
-cells recovered: 4503
-----------------------------
-mounth: 106
-cells susceptible: 1
-cells infected: 270
-cells recovered: 4529
-----------------------------
-mounth: 107
-cells susceptible: 1
-cells infected: 244
-cells recovered: 4555
-----------------------------
-mounth: 107
-cells susceptible: 1
-cells infected: 226
-cells recovered: 4573
-----------------------------
-mounth: 108
-cells susceptible: 1
-cells infected: 199
-cells recovered: 4600
-----------------------------
-mounth: 109
-cells susceptible: 1
-cells infected: 176
-cells recovered: 4623
-----------------------------
-mounth: 109
-cells susceptible: 0
-cells infected: 161
-cells recovered: 4639
-----------------------------
-mounth: 110
-cells susceptible: 0
-cells infected: 144
-cells recovered: 4656
-----------------------------
-mounth: 111
-cells susceptible: 0
-cells infected: 127
-cells recovered: 4673
-----------------------------
-mounth: 111
-cells susceptible: 0
-cells infected: 113
-cells recovered: 4687
-----------------------------
-mounth: 112
-cells susceptible: 0
-cells infected: 103
-cells recovered: 4697
-----------------------------
-mounth: 112
-cells susceptible: 0
-cells infected: 96
-cells recovered: 4704
-----------------------------
-mounth: 113
-cells susceptible: 0
-cells infected: 85
-cells recovered: 4715
-----------------------------
-mounth: 114
-cells susceptible: 0
-cells infected: 77
-cells recovered: 4723
-----------------------------
-mounth: 114
-cells susceptible: 0
-cells infected: 73
-cells recovered: 4727
-----------------------------
-mounth: 115
-cells susceptible: 0
-cells infected: 61
-cells recovered: 4739
-----------------------------
-mounth: 116
-cells susceptible: 0
-cells infected: 55
-cells recovered: 4745
-----------------------------
-mounth: 116
-cells susceptible: 0
-cells infected: 50
-cells recovered: 4750
-----------------------------
-mounth: 117
-cells susceptible: 0
-cells infected: 48
-cells recovered: 4752
-----------------------------
-mounth: 117
-cells susceptible: 0
-cells infected: 45
-cells recovered: 4755
-----------------------------
-mounth: 118
-cells susceptible: 0
-cells infected: 40
-cells recovered: 4760
-----------------------------
-mounth: 119
-cells susceptible: 0
-cells infected: 39
-cells recovered: 4761
-----------------------------
-mounth: 119
-cells susceptible: 0
-cells infected: 33
-cells recovered: 4767
-----------------------------
-mounth: 120
-cells susceptible: 0
-cells infected: 27
-cells recovered: 4773
-----------------------------
-mounth: 121
-cells susceptible: 0
-cells infected: 26
-cells recovered: 4774
-----------------------------
-mounth: 121
-cells susceptible: 0
-cells infected: 22
-cells recovered: 4778
-----------------------------
-mounth: 122
-cells susceptible: 0
-cells infected: 18
-cells recovered: 4782
-----------------------------
-mounth: 122
-cells susceptible: 0
-cells infected: 17
-cells recovered: 4783
-----------------------------
-mounth: 123
-cells susceptible: 0
-cells infected: 12
-cells recovered: 4788
-----------------------------
-mounth: 124
-cells susceptible: 0
-cells infected: 12
-cells recovered: 4788
-----------------------------
-mounth: 124
-cells susceptible: 0
-cells infected: 11
-cells recovered: 4789
-----------------------------
-mounth: 125
-cells susceptible: 0
-cells infected: 11
-cells recovered: 4789
-----------------------------
-mounth: 126
-cells susceptible: 0
-cells infected: 11
-cells recovered: 4789
-----------------------------
-mounth: 126
-cells susceptible: 0
-cells infected: 11
-cells recovered: 4789
-----------------------------
-mounth: 127
-cells susceptible: 0
-cells infected: 10
-cells recovered: 4790
-----------------------------
-mounth: 127
-cells susceptible: 0
-cells infected: 9
-cells recovered: 4791
-----------------------------
-mounth: 128
-cells susceptible: 0
-cells infected: 9
-cells recovered: 4791
-----------------------------
-mounth: 129
-cells susceptible: 0
-cells infected: 7
-cells recovered: 4793
-----------------------------
-mounth: 129
-cells susceptible: 0
-cells infected: 6
-cells recovered: 4794
-----------------------------
-mounth: 130
-cells susceptible: 0
-cells infected: 4
-cells recovered: 4796
-----------------------------
-mounth: 131
-cells susceptible: 0
-cells infected: 3
-cells recovered: 4797
-----------------------------
-mounth: 131
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 132
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 132
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 133
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 134
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 134
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 135
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 136
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 136
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 137
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 137
-cells susceptible: 0
-cells infected: 2
-cells recovered: 4798
-----------------------------
-mounth: 138
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 139
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 139
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 140
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 141
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 141
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 142
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 142
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 143
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 144
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 144
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 145
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 146
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 146
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 147
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 147
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 148
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 149
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 149
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 150
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 151
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 151
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 152
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 152
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 153
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 154
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 154
-cells susceptible: 0
-cells infected: 1
-cells recovered: 4799
-----------------------------
-mounth: 155
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 156
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 156
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 157
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 157
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 158
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 159
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 159
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 160
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 161
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 161
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 162
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 162
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 163
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 164
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 164
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 165
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 166
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 166
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 167
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 167
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 168
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 169
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 169
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 170
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 171
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
-mounth: 171
-cells susceptible: 0
-cells infected: 0
-cells recovered: 4800
-----------------------------
+dia: 15
+----------------------------
+cells good: 2171
+cells medium: 2394
+cells bad: 235
+cells dead: 0
+----------------------------
+weather sun: 3846
+weather rain: 954
+----------XXXXX------------
+dia: 30
+----------------------------
+cells good: 2271
+cells medium: 2315
+cells bad: 214
+cells dead: 0
+----------------------------
+weather sun: 4076
+weather rain: 724
+----------XXXXX------------
+dia: 45
+----------------------------
+cells good: 2363
+cells medium: 2244
+cells bad: 193
+cells dead: 0
+----------------------------
+weather sun: 4067
+weather rain: 733
+----------XXXXX------------
+dia: 60
+----------------------------
+cells good: 2432
+cells medium: 2188
+cells bad: 180
+cells dead: 0
+----------------------------
+weather sun: 3995
+weather rain: 805
+----------XXXXX------------
+dia: 75
+----------------------------
+cells good: 2496
+cells medium: 2132
+cells bad: 172
+cells dead: 0
+----------------------------
+weather sun: 3941
+weather rain: 859
+----------XXXXX------------
+dia: 90
+----------------------------
+cells good: 2552
+cells medium: 2079
+cells bad: 169
+cells dead: 0
+----------------------------
+weather sun: 3890
+weather rain: 910
+----------XXXXX------------
+dia: 105
+----------------------------
+cells good: 2610
+cells medium: 2024
+cells bad: 166
+cells dead: 0
+----------------------------
+weather sun: 3833
+weather rain: 967
+----------XXXXX------------
+dia: 120
+----------------------------
+cells good: 2658
+cells medium: 1977
+cells bad: 165
+cells dead: 0
+----------------------------
+weather sun: 3788
+weather rain: 1012
+----------XXXXX------------
+dia: 135
+----------------------------
+cells good: 2701
+cells medium: 1938
+cells bad: 161
+cells dead: 0
+----------------------------
+weather sun: 3742
+weather rain: 1058
+----------XXXXX------------
+dia: 150
+----------------------------
+cells good: 2742
+cells medium: 1898
+cells bad: 160
+cells dead: 0
+----------------------------
+weather sun: 3720
+weather rain: 1080
+----------XXXXX------------
+dia: 165
+----------------------------
+cells good: 2784
+cells medium: 1858
+cells bad: 158
+cells dead: 0
+----------------------------
+weather sun: 3701
+weather rain: 1099
+----------XXXXX------------
+dia: 180
+----------------------------
+cells good: 2812
+cells medium: 1832
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3694
+weather rain: 1106
+----------XXXXX------------
+dia: 195
+----------------------------
+cells good: 2832
+cells medium: 1812
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3674
+weather rain: 1126
+----------XXXXX------------
+dia: 210
+----------------------------
+cells good: 2860
+cells medium: 1784
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3686
+weather rain: 1114
+----------XXXXX------------
+dia: 225
+----------------------------
+cells good: 2873
+cells medium: 1771
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3672
+weather rain: 1128
+----------XXXXX------------
+dia: 240
+----------------------------
+cells good: 2890
+cells medium: 1754
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3646
+weather rain: 1154
+----------XXXXX------------
+dia: 255
+----------------------------
+cells good: 2910
+cells medium: 1734
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3660
+weather rain: 1140
+----------XXXXX------------
+dia: 270
+----------------------------
+cells good: 2926
+cells medium: 1718
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3653
+weather rain: 1147
+----------XXXXX------------
+dia: 285
+----------------------------
+cells good: 2940
+cells medium: 1704
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3664
+weather rain: 1136
+----------XXXXX------------
+dia: 300
+----------------------------
+cells good: 2948
+cells medium: 1696
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3662
+weather rain: 1138
+----------XXXXX------------
+dia: 315
+----------------------------
+cells good: 2959
+cells medium: 1685
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3654
+weather rain: 1146
+----------XXXXX------------
+dia: 330
+----------------------------
+cells good: 2977
+cells medium: 1667
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3658
+weather rain: 1142
+----------XXXXX------------
+dia: 345
+----------------------------
+cells good: 2981
+cells medium: 1663
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3666
+weather rain: 1134
+----------XXXXX------------
+dia: 360
+----------------------------
+cells good: 2995
+cells medium: 1649
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3669
+weather rain: 1131
+----------XXXXX------------
+dia: 375
+----------------------------
+cells good: 3005
+cells medium: 1639
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3677
+weather rain: 1123
+----------XXXXX------------
+dia: 390
+----------------------------
+cells good: 3011
+cells medium: 1633
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3668
+weather rain: 1132
+----------XXXXX------------
+dia: 405
+----------------------------
+cells good: 3018
+cells medium: 1626
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3664
+weather rain: 1136
+----------XXXXX------------
+dia: 420
+----------------------------
+cells good: 3024
+cells medium: 1620
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3680
+weather rain: 1120
+----------XXXXX------------
+dia: 435
+----------------------------
+cells good: 3031
+cells medium: 1613
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3676
+weather rain: 1124
+----------XXXXX------------
+dia: 450
+----------------------------
+cells good: 3042
+cells medium: 1602
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3674
+weather rain: 1126
+----------XXXXX------------
+dia: 465
+----------------------------
+cells good: 3047
+cells medium: 1597
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3684
+weather rain: 1116
+----------XXXXX------------
+dia: 480
+----------------------------
+cells good: 3052
+cells medium: 1592
+cells bad: 156
+cells dead: 0
+----------------------------
+weather sun: 3675
+weather rain: 1125
+----------XXXXX------------

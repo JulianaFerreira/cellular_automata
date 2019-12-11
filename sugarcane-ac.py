@@ -1,23 +1,27 @@
 from tkinter import *
 import random
 import copy
-
+import matplotlib.pylab as plt
 import imageio as imageio
 from PIL import Image, ImageGrab
-
-#test
 import numpy as np
 
 # Transition quality
-beta = 0.3 #next state
-gamma = 0.3 #state before
+beta = 0.3 #worse quality
+gamma = 0.3 #better quality
 
 # Transition weather
 sun, rain = 0.7, 0.2
 
+good = []
+medium = []
+bad = []
+
 #Size
 width = 60
 height = 80
+time = 480
+quantCells = width * height
 
 class Cell:
 
@@ -65,6 +69,27 @@ def make_frames():
     root.update() #comment to make infinite
     #root.after(1000, make_frames) #not comment to make infinite
 
+def make_graph():
+    figure = plt.figure()
+    plt.title('Sugarcane Quality')
+    #t = np.linspace(0, time, time)
+    #np.arange(0.0, quantCells, 1.0)
+
+    good_line, = plt.plot(good, label='Good')
+    medium_line, = plt.plot(medium, label='Medium')
+    bad_line, = plt.plot(bad, label='Bad')
+
+    plt.legend(handles=[good_line, medium_line, bad_line])
+
+    #plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+
+    plt.xlabel('Transition')
+    plt.ylabel('Number')
+
+    plt.savefig('myplot.png')
+    plt.show()
+
+
 
 def put_cells():
     # state: 0 = good, 1 = medium, 2 = bad, 3 = dead
@@ -74,7 +99,7 @@ def put_cells():
     # Initial quantity cell: Good - 9; Medium - 10; Bad - 1
     aleatory_cells = [Cell(0, 1, 0, 0), Cell(0, 0, 1, 0), Cell(0, 0, 0, 0), Cell(0, 1, 0, 0), Cell(0, 0, 0, 0),
                       Cell(0, 1, 0, 1), Cell(0, 0, 0, 0), Cell(0, 1, 0, 0), Cell(0, 1, 0, 0), Cell(0, 2, 0, 0),
-                      Cell(0, 0, 0, 1), Cell(0, 1, 0, 1), Cell(0, 0, 0, 0), Cell(0, 0, 0, 0), Cell(0, 0, 0, 0),
+                      Cell(0, 0, 0, 1), Cell(0, 1, 0, 1), Cell(0, 0, 0, 0), Cell(0, 0, 1, 0), Cell(0, 0, 0, 0),
                       Cell(0, 1, 0, 0), Cell(0, 1, 0, 0), Cell(0, 1, 0, 0), Cell(0, 0, 0, 0), Cell(0, 1, 0, 1)]
 
     for y in range(-1, width+1):
@@ -159,6 +184,9 @@ def processing():
     archive.write("weather sun: %d" % cells_sun + "\n")
     archive.write("weather rain: %d" % cells_rain + "\n")
     archive.write("----------XXXXX------------" + "\n")
+    good.append(cells_state_0)
+    medium.append(cells_state_1)
+    bad.append(cells_state_2)
 
 
     for y in range(0, width):
@@ -333,6 +361,8 @@ for i in range(0, 32): #comment to make infinite
     xx = x + canvas.winfo_width()
     yy = y + canvas.winfo_height()
     images.append(ImageGrab.grab((x, y, xx, yy)))
+
+make_graph()
 
 imageio.mimsave('ac.gif', images, duration=0.5)
 
