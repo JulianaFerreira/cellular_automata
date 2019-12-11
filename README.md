@@ -11,7 +11,7 @@
 <b>Weather:</b> Sun, Rain
 
 
-### Quality representation in a cellular automato
+### Quality representation in a cellular automata
 
 <img src="ac.gif">
 
