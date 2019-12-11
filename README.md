@@ -1,6 +1,6 @@
 # Sugarcane Cellular Automata
 
-<b>Objective:</b> predict volume and quality in a sugarcane plantation
+<b>Objective:</b> predict quality in a sugarcane plantation
 
 <b>States and Compartments</b> 
 
