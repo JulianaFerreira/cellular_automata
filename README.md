@@ -1,20 +1,18 @@
-# Sugarcane Compartimental Model
+# Sugarcane Cellular Automata
 
-<b>Objective:</b> simulate quality in a sugar cane plantation
+<b>Objective:</b> predict volume and quality in a sugarcane plantation
 
-<b>Compartments:</b> Good, Medium, Bad
+<b>States and Compartments</b> 
 
-<b>Variables:</b> Phase, Quality Score (Temp,Umid,Wind,Lumi)
+<b>Quality:</b> Good, Medium, Bad
+
+<b>Phase:</b> Bud, Tillering, Grow, Mature, Harvest
+
+<b>Weather:</b> Sun, Rain
 
 
-# Example 
+### Quality representation in a cellular automato
 
-<b>Compartimental model</b> 
+<img src="ac.gif">
 
 <img src="myplot.png">
-
-
-<b>Cellular automata</b>
-
-<img src="ac.png">
-
