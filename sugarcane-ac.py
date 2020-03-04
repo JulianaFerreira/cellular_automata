@@ -253,6 +253,13 @@ def search_weather(state, a, b):
     return count
 
 
+def getNewState(markovchain,lamb,state):
+    
+
+    return 0
+
+
+
 def getRandomNumber(distribution):
     if distribution == 0:
         returningRandomNumber = np.random.uniform() # UNIFORM
