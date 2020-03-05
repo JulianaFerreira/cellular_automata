@@ -9,7 +9,7 @@ import numpy as np
 # States - quality
 qualityStates = ["Good", "Medium", "Bad"]
 # Transition matrix - quality
-qualityTransitionMatrix = [[0.2, 0.6, 0.2], [0.1, 0.6, 0.3], [0.2, 0.7, 0.1]]
+qualityTransitionMatrix = [[0.5, 0.3, 0.2], [0.2, 0.6, 0.2], [0.2, 0.4, 0.4]]
 
 # States - weather
 weatherStates = ["Sun", "Rain"]
@@ -133,13 +133,20 @@ def processing():
             temporary[x][y].setweather(getNewState(weatherStates, weatherTransitionMatrix, previousGen[x][y].getweather()))
 
 
-            #count states
+            #count states - quality
             if previousGen[x][y].getquality() == qualityStates[0]:
                 cells_state_0 += 1
             elif previousGen[x][y].getquality() == qualityStates[1]:
                 cells_state_1 += 1
             elif previousGen[x][y].getquality() == qualityStates[2]:
                 cells_state_2 += 1
+
+            # count states - weather
+            if previousGen[x][y].getquality() == weatherStates[0]:
+                cells_sun += 1
+            elif previousGen[x][y].getquality() == weatherStates[1]:
+                cells_rain += 1
+
 
     archive = open("ac.txt", "a")
     archive2 = open("ac.txt", "r")
@@ -163,7 +170,7 @@ def processing():
             previousGen[x][y] = temporary[x][y]
 
 
-# A function that implements the Markov model
+# Function that implements the Markov model
 def getNewState(states, transitionMatrix, currentState):
     i = 0
     newState = ""
@@ -178,22 +185,22 @@ def getNewState(states, transitionMatrix, currentState):
 def paint_cells():
     for y in range(width):
         for x in range(height):
-            if previousGen[x][y].getquality() == 0:
+            if previousGen[x][y].getquality() == qualityStates[0]:
                 canvas.itemconfig(cell[x][y], fill="green")
-            elif previousGen[x][y].getquality() == 1:
+            elif previousGen[x][y].getquality() == qualityStates[1]:
                 canvas.itemconfig(cell[x][y], fill="yellow")
-            elif previousGen[x][y].getquality() == 2:
+            elif previousGen[x][y].getquality() == qualityStates[2]:
                 canvas.itemconfig(cell[x][y], fill="red")
-            elif previousGen[x][y].getquality() == 3:
+            elif previousGen[x][y].getquality() == qualityStates[3]:
                 canvas.itemconfig(cell[x][y], fill="black")
 
 
 def paint_cells_weather():
     for y in range(width):
         for x in range(height):
-            if previousGen[x][y].getweather() == 0:
+            if previousGen[x][y].getweather() == weatherStates[0]:
                 canvas.itemconfig(cell[x][y], fill="yellow")
-            elif previousGen[x][y].getweather() == 1:
+            elif previousGen[x][y].getweather() == weatherStates[1]:
                 canvas.itemconfig(cell[x][y], fill="blue")
 
 
