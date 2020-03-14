@@ -176,6 +176,10 @@ def processing():
 def getNewState(states, transitionMatrix, currentState):
     i = 0
     newState = ""
+
+    if currentState == states[0]:
+        "test"
+
     for x in states:
         if currentState == x:
             newState = np.random.choice(states, replace=True, p=transitionMatrix[i])

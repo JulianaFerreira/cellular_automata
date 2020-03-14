@@ -7,25 +7,28 @@ from PIL import Image, ImageGrab
 import numpy as np
 
 # States - quality
-qualityStates = ["Good", "Medium", "Bad"]
+qualityStates = ["Good", "Medium", "Bad", "Dead"]
 # Transition matrix - quality
-qualityTransitionMatrix = [[0.5, 0.3, 0.2], [0.2, 0.6, 0.2], [0.2, 0.4, 0.4]]
+qualityTransitionMatrix = [[0.5, 0.3, 0.2, 0], [0.2, 0.6, 0.2, 0], [0.2, 0.39, 0.39, 0.02], [0, 0, 0, 1]]
 
 # States - weather
 weatherStates = ["Sun", "Rain"]
 # Transition matrix - weather
 weatherTransitionMatrix = [[0.8, 0.2], [0.7, 0.3]]
 
-
-good = []
-medium = []
-bad = []
+time = 480
+cycles = 32
+timeinterval = 15
 
 # Size
 width = 60
 height = 80
-time = 480
 quantCells = width * height
+
+good = []
+medium = []
+bad = []
+dead = []
 
 
 class Cell:
@@ -84,8 +87,9 @@ def make_graph():
     good_line, = plt.plot(good, label='Good')
     medium_line, = plt.plot(medium, label='Medium')
     bad_line, = plt.plot(bad, label='Bad')
+    dead_line, = plt.plot(dead, label='Dead')
 
-    plt.legend(handles=[good_line, medium_line, bad_line])
+    plt.legend(handles=[good_line, medium_line, bad_line, dead_line])
 
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
@@ -100,11 +104,17 @@ def put_cells():
     # state: 0 = good, 1 = medium, 2 = bad, 3 = dead
     # phase: 0 = bud, 1 = tillering, 2 = grow, 3 = mature, 4 = harvest
     # weather: 0 = sun, 1 = rain
-    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1
-    aleatory_cells = [Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[0], "Rain", 0), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[0], "Sun", 0),
-                      Cell(0, qualityStates[1], "Sun", 1), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[2], "Sun", 0),
-                      Cell(0, qualityStates[0], "Sun", 1), Cell(0, qualityStates[1], "Sun", 1), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[0], "Rain", 0), Cell(0, qualityStates[0], "Sun", 0),
-                      Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[1], "Sun", 1)]
+    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1  / Sun - 15; Rain - 5
+    aleatory_cells = [Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[0], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
+                      Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[2], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[1]), Cell(0, qualityStates[1], 0, weatherStates[1]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[0], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
+                      Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1])]
 
     for y in range(-1, width + 1):
         for x in range(-1, height + 1):
@@ -125,7 +135,21 @@ def processing():
     for y in range(0, width):
         for x in range(0, height):
             temporary[x][y] = copy.copy(previousGen[x][y])
-            temporary[x][y].settime(temporary[x][y].gettime() + 15)
+            temporary[x][y].settime(temporary[x][y].gettime() + timeinterval)
+
+            # setphase
+            if previousGen[x][y].gettime() == 30:
+                temporary[x][y].setphase(1)
+
+            elif previousGen[x][y].gettime() == 150:
+                temporary[x][y].setphase(2)
+
+            elif previousGen[x][y].gettime() == 270:
+                temporary[x][y].setphase(3)
+
+            elif previousGen[x][y].gettime() == 480:
+                temporary[x][y].setphase(4)
+
 
             # Next state - quality
             temporary[x][y].setquality(getNewState(qualityStates, qualityTransitionMatrix, previousGen[x][y].getquality()))
@@ -140,18 +164,23 @@ def processing():
                 cells_state_1 += 1
             elif previousGen[x][y].getquality() == qualityStates[2]:
                 cells_state_2 += 1
+            elif previousGen[x][y].getquality() == qualityStates[3]:
+                cells_state_3 += 1
 
             # count states - weather
-            if previousGen[x][y].getquality() == weatherStates[0]:
+            if previousGen[x][y].getweather() == weatherStates[0]:
                 cells_sun += 1
-            elif previousGen[x][y].getquality() == weatherStates[1]:
+            elif previousGen[x][y].getweather() == weatherStates[1]:
                 cells_rain += 1
+
+
+
 
 
     archive = open("ac.txt", "a")
     archive2 = open("ac.txt", "r")
     content = archive2.readlines()
-    archive.write("dia: %d" % temporary[0][0].gettime() + "\n")
+    archive.write("day: %d" % temporary[0][0].gettime() + "\n")
     archive.write("----------------------------" + "\n")
     archive.write("cells good: %d" % cells_state_0 + "\n")
     archive.write("cells medium: %d" % cells_state_1 + "\n")
@@ -164,6 +193,7 @@ def processing():
     good.append(cells_state_0)
     medium.append(cells_state_1)
     bad.append(cells_state_2)
+    dead.append(cells_state_3)
 
     for y in range(0, width):
         for x in range(0, height):
@@ -227,16 +257,22 @@ put_cells()
 
 images = []
 
-for i in range(0, 32):  # comment to make infinite
-    make_frames()
-    x = root.winfo_rootx() + canvas.winfo_x()
-    y = root.winfo_rooty() + canvas.winfo_y()
-    xx = x + canvas.winfo_width()
-    yy = y + canvas.winfo_height()
-    images.append(ImageGrab.grab((x, y, xx, yy)))
+for i in range(0, cycles):
+    processing() #just numbers
+    print("interation:", i)
 
 make_graph()
 
-imageio.mimsave('ac.gif', images, duration=0.5)
-
-root.mainloop()
+# for i in range(0, cycles):  # comment to make infinite
+#     make_frames()
+#     x = root.winfo_rootx() + canvas.winfo_x()
+#     y = root.winfo_rooty() + canvas.winfo_y()
+#     xx = x + canvas.winfo_width()
+#     yy = y + canvas.winfo_height()
+#     images.append(ImageGrab.grab((x, y, xx, yy)))
+#
+# make_graph()
+#
+# imageio.mimsave('ac.gif', images, duration=0.5)
+#
+# root.mainloop()
