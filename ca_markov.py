@@ -9,7 +9,7 @@ import numpy as np
 # States - quality
 qualityStates = ["Good", "Medium", "Bad", "Dead"]
 # Transition matrix - quality
-qualityTransitionMatrix = [[0.5, 0.3, 0.2, 0], [0.2, 0.6, 0.2, 0], [0.2, 0.39, 0.39, 0.02], [0, 0, 0, 1]]
+qualityTransitionMatrix = [[0.5, 0.3, 0.2, 0], [0.2, 0.6, 0.2, 0], [0.2, 0.395, 0.395, 0.01], [0, 0, 0, 1]]
 
 # States - weather
 weatherStates = ["Sun", "Rain"]
@@ -21,8 +21,8 @@ cycles = 32
 timeinterval = 15
 
 # Size
-width = 60
-height = 80
+width = 30
+height = 40
 quantCells = width * height
 
 good = []
@@ -72,8 +72,8 @@ temporary = [[0 for row in range(-1, width + 1)] for col in range(-1, height + 1
 def make_frames():
     processing()
     paint_cells()
-    # paint_cells_phase()
-    # paint_cells_weather()
+    #paint_cells_phase()
+    #paint_cells_weather()
     root.update()  # comment to make infinite
     # root.after(1000, make_frames) #not comment to make infinite
 
@@ -120,7 +120,7 @@ def put_cells():
         for x in range(-1, height + 1):
             previousGen[x][y] = random.choice(aleatory_cells)
             temporary[x][y] = 0
-            cell[x][y] = canvas.create_rectangle((x * 10, y * 10, x * 10 + 10, y * 10 + 10), outline="gray50",
+            cell[x][y] = canvas.create_rectangle((x * 20, y * 20, x * 20 + 20, y * 20 + 20), outline="gray50",
                                                  fill="white")
 
 
@@ -172,8 +172,6 @@ def processing():
                 cells_sun += 1
             elif previousGen[x][y].getweather() == weatherStates[1]:
                 cells_rain += 1
-
-
 
 
 
@@ -257,22 +255,22 @@ put_cells()
 
 images = []
 
-for i in range(0, cycles):
-    processing() #just numbers
-    print("interation:", i)
+# for i in range(0, cycles):
+#     processing() #just numbers
+#     print("interation:", i)
+#
+# make_graph()
+
+for i in range(0, cycles):  # comment to make infinite
+    make_frames()
+    x = root.winfo_rootx() + canvas.winfo_x()
+    y = root.winfo_rooty() + canvas.winfo_y()
+    xx = x + canvas.winfo_width()
+    yy = y + canvas.winfo_height()
+    images.append(ImageGrab.grab((x, y, xx, yy)))
 
 make_graph()
 
-# for i in range(0, cycles):  # comment to make infinite
-#     make_frames()
-#     x = root.winfo_rootx() + canvas.winfo_x()
-#     y = root.winfo_rooty() + canvas.winfo_y()
-#     xx = x + canvas.winfo_width()
-#     yy = y + canvas.winfo_height()
-#     images.append(ImageGrab.grab((x, y, xx, yy)))
-#
-# make_graph()
-#
-# imageio.mimsave('ac.gif', images, duration=0.5)
-#
-# root.mainloop()
+imageio.mimsave('ac.gif', images, duration=0.5)
+
+root.mainloop()

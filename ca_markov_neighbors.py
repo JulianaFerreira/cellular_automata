@@ -7,25 +7,28 @@ from PIL import Image, ImageGrab
 import numpy as np
 
 # States - quality
-qualityStates = ["Good", "Medium", "Bad"]
+qualityStates = ["Good", "Medium", "Bad", "Dead"]
 # Transition matrix - quality
-qualityTransitionMatrix = [[0.5, 0.3, 0.2], [0.2, 0.6, 0.2], [0.2, 0.4, 0.4]]
+qualityTransitionMatrix = [[0.5, 0.3, 0.2, 0], [0.2, 0.6, 0.2, 0], [0.2, 0.395, 0.395, 0.01], [0, 0, 0, 1]]
 
 # States - weather
 weatherStates = ["Sun", "Rain"]
 # Transition matrix - weather
 weatherTransitionMatrix = [[0.8, 0.2], [0.7, 0.3]]
 
+time = 480
+cycles = 32
+timeinterval = 15
+
+# Size
+width = 30
+height = 40
+quantCells = width * height
 
 good = []
 medium = []
 bad = []
-
-# Size
-width = 60
-height = 80
-time = 480
-quantCells = width * height
+dead = []
 
 
 class Cell:
@@ -69,8 +72,8 @@ temporary = [[0 for row in range(-1, width + 1)] for col in range(-1, height + 1
 def make_frames():
     processing()
     paint_cells()
-    # paint_cells_phase()
-    # paint_cells_weather()
+    #paint_cells_phase()
+    #paint_cells_weather()
     root.update()  # comment to make infinite
     # root.after(1000, make_frames) #not comment to make infinite
 
@@ -84,8 +87,9 @@ def make_graph():
     good_line, = plt.plot(good, label='Good')
     medium_line, = plt.plot(medium, label='Medium')
     bad_line, = plt.plot(bad, label='Bad')
+    dead_line, = plt.plot(dead, label='Dead')
 
-    plt.legend(handles=[good_line, medium_line, bad_line])
+    plt.legend(handles=[good_line, medium_line, bad_line, dead_line])
 
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
@@ -100,17 +104,23 @@ def put_cells():
     # state: 0 = good, 1 = medium, 2 = bad, 3 = dead
     # phase: 0 = bud, 1 = tillering, 2 = grow, 3 = mature, 4 = harvest
     # weather: 0 = sun, 1 = rain
-    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1
-    aleatory_cells = [Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[0], "Rain", 0), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[0], "Sun", 0),
-                      Cell(0, qualityStates[1], "Sun", 1), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[2], "Sun", 0),
-                      Cell(0, qualityStates[0], "Sun", 1), Cell(0, qualityStates[1], "Sun", 1), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[0], "Rain", 0), Cell(0, qualityStates[0], "Sun", 0),
-                      Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[1], "Sun", 0), Cell(0, qualityStates[0], "Sun", 0), Cell(0, qualityStates[1], "Sun", 1)]
+    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1  / Sun - 15; Rain - 5
+    aleatory_cells = [Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[0], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
+                      Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[2], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[1]), Cell(0, qualityStates[1], 0, weatherStates[1]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[0], 0, weatherStates[0]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
+                      Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1]),
+                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1])]
 
     for y in range(-1, width + 1):
         for x in range(-1, height + 1):
             previousGen[x][y] = random.choice(aleatory_cells)
             temporary[x][y] = 0
-            cell[x][y] = canvas.create_rectangle((x * 10, y * 10, x * 10 + 10, y * 10 + 10), outline="gray50",
+            cell[x][y] = canvas.create_rectangle((x * 20, y * 20, x * 20 + 20, y * 20 + 20), outline="gray50",
                                                  fill="white")
 
 
@@ -127,7 +137,21 @@ def processing():
             neighbors_state_good = search_state("Good", x, y)
 
             temporary[x][y] = copy.copy(previousGen[x][y])
-            temporary[x][y].settime(temporary[x][y].gettime() + 15)
+            temporary[x][y].settime(temporary[x][y].gettime() + timeinterval)
+
+            # setphase
+            if previousGen[x][y].gettime() == 30:
+                temporary[x][y].setphase(1)
+
+            elif previousGen[x][y].gettime() == 150:
+                temporary[x][y].setphase(2)
+
+            elif previousGen[x][y].gettime() == 270:
+                temporary[x][y].setphase(3)
+
+            elif previousGen[x][y].gettime() == 480:
+                temporary[x][y].setphase(4)
+
 
             # Next state - quality
             temporary[x][y].setquality(getNewState(qualityStates, qualityTransitionMatrix, previousGen[x][y].getquality()))
@@ -142,18 +166,21 @@ def processing():
                 cells_state_1 += 1
             elif previousGen[x][y].getquality() == qualityStates[2]:
                 cells_state_2 += 1
+            elif previousGen[x][y].getquality() == qualityStates[3]:
+                cells_state_3 += 1
 
             # count states - weather
-            if previousGen[x][y].getquality() == weatherStates[0]:
+            if previousGen[x][y].getweather() == weatherStates[0]:
                 cells_sun += 1
-            elif previousGen[x][y].getquality() == weatherStates[1]:
+            elif previousGen[x][y].getweather() == weatherStates[1]:
                 cells_rain += 1
+
 
 
     archive = open("ac.txt", "a")
     archive2 = open("ac.txt", "r")
     content = archive2.readlines()
-    archive.write("dia: %d" % temporary[0][0].gettime() + "\n")
+    archive.write("day: %d" % temporary[0][0].gettime() + "\n")
     archive.write("----------------------------" + "\n")
     archive.write("cells good: %d" % cells_state_0 + "\n")
     archive.write("cells medium: %d" % cells_state_1 + "\n")
@@ -166,6 +193,7 @@ def processing():
     good.append(cells_state_0)
     medium.append(cells_state_1)
     bad.append(cells_state_2)
+    dead.append(cells_state_3)
 
     for y in range(0, width):
         for x in range(0, height):
@@ -176,10 +204,6 @@ def processing():
 def getNewState(states, transitionMatrix, currentState):
     i = 0
     newState = ""
-
-    if currentState == states[0]:
-        "test"
-
     for x in states:
         if currentState == x:
             newState = np.random.choice(states, replace=True, p=transitionMatrix[i])
@@ -188,35 +212,36 @@ def getNewState(states, transitionMatrix, currentState):
     return newState
 
 
+
+
 def search_state(state, a, b):
     count = 0
 
-    if previousGen[a - 1][b + 1].getstate() == state:
+    if previousGen[a - 1][b + 1].getquality() == state:
         count += 1
 
-    if previousGen[a][b + 1].getstate() == state:
+    if previousGen[a][b + 1].getquality() == state:
         count += 1
 
-    if previousGen[a + 1][b + 1].getstate() == state:
+    if previousGen[a + 1][b + 1].getquality() == state:
         count += 1
 
-    if previousGen[a - 1][b].getstate() == state:
+    if previousGen[a - 1][b].getquality() == state:
         count += 1
 
-    if previousGen[a + 1][b].getstate() == state:
+    if previousGen[a + 1][b].getquality() == state:
         count += 1
 
-    if previousGen[a - 1][b - 1].getstate() == state:
+    if previousGen[a - 1][b - 1].getquality() == state:
         count += 1
 
-    if previousGen[a][b - 1].getstate() == state:
+    if previousGen[a][b - 1].getquality() == state:
         count += 1
 
-    if previousGen[a + 1][b - 1].getstate() == state:
+    if previousGen[a + 1][b - 1].getquality() == state:
         count += 1
 
     return count
-
 
 def paint_cells():
     for y in range(width):
@@ -263,7 +288,13 @@ put_cells()
 
 images = []
 
-for i in range(0, 32):  # comment to make infinite
+# for i in range(0, cycles):
+#     processing() #just numbers
+#     print("interation:", i)
+#
+# make_graph()
+
+for i in range(0, cycles):  # comment to make infinite
     make_frames()
     x = root.winfo_rootx() + canvas.winfo_x()
     y = root.winfo_rooty() + canvas.winfo_y()
