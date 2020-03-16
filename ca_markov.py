@@ -94,7 +94,7 @@ def make_graph():
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
     plt.xlabel('Transition')
-    plt.ylabel('Number')
+    plt.ylabel('Cells')
 
     plt.savefig('myplot.png')
     plt.show()

@@ -1,320 +1,320 @@
-dia: 15
+day: 15
 ----------------------------
-cells good: 2127
-cells medium: 2425
-cells bad: 248
+cells good: 537
+cells medium: 608
+cells bad: 55
 cells dead: 0
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 881
+weather rain: 319
 ----------XXXXX------------
-dia: 30
+day: 30
 ----------------------------
-cells good: 1591
-cells medium: 2206
-cells bad: 1003
+cells good: 458
+cells medium: 603
+cells bad: 139
 cells dead: 0
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 915
+weather rain: 285
 ----------XXXXX------------
-dia: 45
+day: 45
 ----------------------------
-cells good: 1400
-cells medium: 2226
-cells bad: 1174
-cells dead: 0
+cells good: 438
+cells medium: 604
+cells bad: 156
+cells dead: 2
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 933
+weather rain: 267
 ----------XXXXX------------
-dia: 60
+day: 60
 ----------------------------
-cells good: 1390
-cells medium: 2178
-cells bad: 1232
-cells dead: 0
+cells good: 425
+cells medium: 618
+cells bad: 153
+cells dead: 4
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 951
+weather rain: 249
 ----------XXXXX------------
-dia: 75
+day: 75
 ----------------------------
-cells good: 1387
-cells medium: 2224
-cells bad: 1189
-cells dead: 0
+cells good: 432
+cells medium: 604
+cells bad: 159
+cells dead: 5
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 935
+weather rain: 265
 ----------XXXXX------------
-dia: 90
+day: 90
 ----------------------------
-cells good: 1356
-cells medium: 2306
-cells bad: 1138
-cells dead: 0
+cells good: 408
+cells medium: 598
+cells bad: 188
+cells dead: 6
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 936
+weather rain: 264
 ----------XXXXX------------
-dia: 105
+day: 105
 ----------------------------
-cells good: 1351
-cells medium: 2235
-cells bad: 1214
-cells dead: 0
+cells good: 416
+cells medium: 609
+cells bad: 167
+cells dead: 8
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 953
+weather rain: 247
 ----------XXXXX------------
-dia: 120
+day: 120
 ----------------------------
-cells good: 1419
-cells medium: 2210
-cells bad: 1171
-cells dead: 0
+cells good: 423
+cells medium: 619
+cells bad: 148
+cells dead: 10
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 936
+weather rain: 264
 ----------XXXXX------------
-dia: 135
+day: 135
 ----------------------------
-cells good: 1378
-cells medium: 2217
-cells bad: 1205
-cells dead: 0
+cells good: 389
+cells medium: 630
+cells bad: 170
+cells dead: 11
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 953
+weather rain: 247
 ----------XXXXX------------
-dia: 150
+day: 150
 ----------------------------
-cells good: 1357
-cells medium: 2208
-cells bad: 1235
-cells dead: 0
+cells good: 404
+cells medium: 608
+cells bad: 173
+cells dead: 15
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 951
+weather rain: 249
 ----------XXXXX------------
-dia: 165
+day: 165
 ----------------------------
-cells good: 1388
-cells medium: 2172
-cells bad: 1240
-cells dead: 0
+cells good: 377
+cells medium: 652
+cells bad: 154
+cells dead: 17
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 956
+weather rain: 244
 ----------XXXXX------------
-dia: 180
+day: 180
 ----------------------------
-cells good: 1382
-cells medium: 2200
-cells bad: 1218
-cells dead: 0
+cells good: 405
+cells medium: 626
+cells bad: 152
+cells dead: 17
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 939
+weather rain: 261
 ----------XXXXX------------
-dia: 195
+day: 195
 ----------------------------
-cells good: 1358
-cells medium: 2210
-cells bad: 1232
-cells dead: 0
+cells good: 361
+cells medium: 645
+cells bad: 176
+cells dead: 18
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 908
+weather rain: 292
 ----------XXXXX------------
-dia: 210
+day: 210
 ----------------------------
-cells good: 1329
-cells medium: 2243
-cells bad: 1228
-cells dead: 0
+cells good: 381
+cells medium: 625
+cells bad: 174
+cells dead: 20
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 944
+weather rain: 256
 ----------XXXXX------------
-dia: 225
+day: 225
 ----------------------------
-cells good: 1334
-cells medium: 2236
-cells bad: 1230
-cells dead: 0
+cells good: 400
+cells medium: 607
+cells bad: 171
+cells dead: 22
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 935
+weather rain: 265
 ----------XXXXX------------
-dia: 240
+day: 240
 ----------------------------
-cells good: 1385
-cells medium: 2158
-cells bad: 1257
-cells dead: 0
+cells good: 397
+cells medium: 603
+cells bad: 177
+cells dead: 23
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 923
+weather rain: 277
 ----------XXXXX------------
-dia: 255
+day: 255
 ----------------------------
-cells good: 1293
-cells medium: 2210
-cells bad: 1297
-cells dead: 0
+cells good: 423
+cells medium: 589
+cells bad: 163
+cells dead: 25
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 925
+weather rain: 275
 ----------XXXXX------------
-dia: 270
+day: 270
 ----------------------------
-cells good: 1387
-cells medium: 2202
-cells bad: 1211
-cells dead: 0
+cells good: 417
+cells medium: 604
+cells bad: 154
+cells dead: 25
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 937
+weather rain: 263
 ----------XXXXX------------
-dia: 285
+day: 285
 ----------------------------
-cells good: 1402
-cells medium: 2214
-cells bad: 1184
-cells dead: 0
+cells good: 401
+cells medium: 598
+cells bad: 175
+cells dead: 26
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 966
+weather rain: 234
 ----------XXXXX------------
-dia: 300
+day: 300
 ----------------------------
-cells good: 1377
-cells medium: 2212
-cells bad: 1211
-cells dead: 0
+cells good: 421
+cells medium: 614
+cells bad: 139
+cells dead: 26
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 936
+weather rain: 264
 ----------XXXXX------------
-dia: 315
+day: 315
 ----------------------------
-cells good: 1328
-cells medium: 2275
-cells bad: 1197
-cells dead: 0
+cells good: 418
+cells medium: 584
+cells bad: 171
+cells dead: 27
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 943
+weather rain: 257
 ----------XXXXX------------
-dia: 330
+day: 330
 ----------------------------
-cells good: 1380
-cells medium: 2234
-cells bad: 1186
-cells dead: 0
+cells good: 414
+cells medium: 592
+cells bad: 167
+cells dead: 27
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 950
+weather rain: 250
 ----------XXXXX------------
-dia: 345
+day: 345
 ----------------------------
-cells good: 1356
-cells medium: 2300
-cells bad: 1144
-cells dead: 0
+cells good: 411
+cells medium: 596
+cells bad: 162
+cells dead: 31
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 928
+weather rain: 272
 ----------XXXXX------------
-dia: 360
+day: 360
 ----------------------------
-cells good: 1411
-cells medium: 2169
-cells bad: 1220
-cells dead: 0
+cells good: 398
+cells medium: 605
+cells bad: 166
+cells dead: 31
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 929
+weather rain: 271
 ----------XXXXX------------
-dia: 375
+day: 375
 ----------------------------
-cells good: 1412
-cells medium: 2188
-cells bad: 1200
-cells dead: 0
+cells good: 388
+cells medium: 588
+cells bad: 191
+cells dead: 33
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 928
+weather rain: 272
 ----------XXXXX------------
-dia: 390
+day: 390
 ----------------------------
-cells good: 1441
-cells medium: 2199
-cells bad: 1160
-cells dead: 0
+cells good: 404
+cells medium: 604
+cells bad: 157
+cells dead: 35
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 951
+weather rain: 249
 ----------XXXXX------------
-dia: 405
+day: 405
 ----------------------------
-cells good: 1413
-cells medium: 2167
-cells bad: 1220
-cells dead: 0
+cells good: 376
+cells medium: 626
+cells bad: 162
+cells dead: 36
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 927
+weather rain: 273
 ----------XXXXX------------
-dia: 420
+day: 420
 ----------------------------
-cells good: 1397
-cells medium: 2219
-cells bad: 1184
-cells dead: 0
+cells good: 372
+cells medium: 613
+cells bad: 175
+cells dead: 40
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 916
+weather rain: 284
 ----------XXXXX------------
-dia: 435
+day: 435
 ----------------------------
-cells good: 1386
-cells medium: 2152
-cells bad: 1262
-cells dead: 0
+cells good: 385
+cells medium: 598
+cells bad: 176
+cells dead: 41
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 906
+weather rain: 294
 ----------XXXXX------------
-dia: 450
+day: 450
 ----------------------------
-cells good: 1410
-cells medium: 2150
-cells bad: 1240
-cells dead: 0
+cells good: 408
+cells medium: 590
+cells bad: 159
+cells dead: 43
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 937
+weather rain: 263
 ----------XXXXX------------
-dia: 465
+day: 465
 ----------------------------
-cells good: 1367
-cells medium: 2160
-cells bad: 1273
-cells dead: 0
+cells good: 394
+cells medium: 598
+cells bad: 164
+cells dead: 44
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 914
+weather rain: 286
 ----------XXXXX------------
-dia: 480
+day: 480
 ----------------------------
-cells good: 1359
-cells medium: 2239
-cells bad: 1202
-cells dead: 0
+cells good: 409
+cells medium: 559
+cells bad: 187
+cells dead: 45
 ----------------------------
-weather sun: 0
-weather rain: 0
+weather sun: 939
+weather rain: 261
 ----------XXXXX------------

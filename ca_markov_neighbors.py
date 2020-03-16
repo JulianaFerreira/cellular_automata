@@ -9,7 +9,10 @@ import numpy as np
 # States - quality
 qualityStates = ["Good", "Medium", "Bad", "Dead"]
 # Transition matrix - quality
-qualityTransitionMatrix = [[0.5, 0.3, 0.2, 0], [0.2, 0.6, 0.2, 0], [0.2, 0.395, 0.395, 0.01], [0, 0, 0, 1]]
+qualityTransitionMatrix = [[0.6, 0.3, 0.1, 0], [0.2, 0.6, 0.2, 0], [0.3, 0.495, 0.195, 0.01], [0, 0, 0, 1]]
+qualityTransitionMatrixGood = [[0.7, 0.25, 0.05, 0], [0.3, 0.55, 0.15, 0], [0.4, 0.445, 0.145, 0.01], [0, 0, 0, 1]]
+qualityTransitionMatrixMed = [[0.55, 0.4, 0.05, 0], [0.15, 0.7, 0.15, 0], [0.25, 0.595, 0.145, 0.01], [0, 0, 0, 1]]
+qualityTransitionMatrixBad = [[0.55, 0.25, 0.2, 0], [0.15, 0.55, 0.3, 0], [0.25, 0.445, 0.295, 0.01], [0, 0, 0, 1]]
 
 # States - weather
 weatherStates = ["Sun", "Rain"]
@@ -94,7 +97,7 @@ def make_graph():
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
     plt.xlabel('Transition')
-    plt.ylabel('Number')
+    plt.ylabel('Cells')
 
     plt.savefig('myplot.png')
     plt.show()
@@ -135,6 +138,10 @@ def processing():
     for y in range(0, width):
         for x in range(0, height):
             neighbors_state_good = search_state("Good", x, y)
+            neighbors_state_med = search_state("Medium", x, y)
+            neighbors_state_bad = search_state("Bad", x, y)
+            neighbors = [neighbors_state_good,neighbors_state_med,neighbors_state_bad]
+            transitionMatrix = updateTransitionMatrix(qualityTransitionMatrix, neighbors)
 
             temporary[x][y] = copy.copy(previousGen[x][y])
             temporary[x][y].settime(temporary[x][y].gettime() + timeinterval)
@@ -154,7 +161,7 @@ def processing():
 
 
             # Next state - quality
-            temporary[x][y].setquality(getNewState(qualityStates, qualityTransitionMatrix, previousGen[x][y].getquality()))
+            temporary[x][y].setquality(getNewState(qualityStates, transitionMatrix, previousGen[x][y].getquality()))
             # Next state - weather
             temporary[x][y].setweather(getNewState(weatherStates, weatherTransitionMatrix, previousGen[x][y].getweather()))
 
@@ -211,6 +218,17 @@ def getNewState(states, transitionMatrix, currentState):
 
     return newState
 
+def updateTransitionMatrix(transitionMatrix, neighbors):
+    newTransitionMatrix = transitionMatrix
+
+    if neighbors[0] > 4:
+        newTransitionMatrix = qualityTransitionMatrixGood
+    elif neighbors[1] > 4:
+        newTransitionMatrix = qualityTransitionMatrixMed
+    elif neighbors[1] > 4:
+        newTransitionMatrix = qualityTransitionMatrixBad
+
+    return newTransitionMatrix
 
 
 
