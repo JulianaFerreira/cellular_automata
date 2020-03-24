@@ -7,13 +7,13 @@ from PIL import Image, ImageGrab
 import numpy as np
 
 # States
-states1 = ["Cb", "Cq", "Cc","n"]
+states1 = ["n","Cb", "Cq", "Cc"]
 # Transition matrix
-transitionMatrix1 = [[0.6, 0.3, 0.1, 0], [0.2, 0.6, 0.2, 0], [0.3, 0.495, 0.195, 0.01], [0, 0, 0, 1]]
+transitionMatrix1 = [[0.73, 0.03, 0.17, 0.07], [0.11, 0.17, 0.44, 0.28], [0.16, 0.09, 0.54, 0.21], [0.16, 0.05, 0.31, 0.48]]
 
 time = 480
-cycles = 32
-timeinterval = 15
+cycles = 48
+timeinterval = 30
 
 # Size
 width = 30
@@ -77,12 +77,13 @@ def make_graph():
     # t = np.linspace(0, time, time)
     # np.arange(0.0, quantCells, 1.0)
 
-    good_line, = plt.plot(state0, label=states1[0])
-    medium_line, = plt.plot(state1, label=states1[1])
-    bad_line, = plt.plot(state2, label=states1[2])
-    dead_line, = plt.plot(state3, label=states1[3])
+    #s1_line, = plt.plot(state0, label=states1[0])
+    s2_line, = plt.plot(state1, label=states1[1], color="brown")
+    s3_line, = plt.plot(state2, label=states1[2], color="red")
+    s4_line, = plt.plot(state3, label=states1[3], color="green")
 
-    plt.legend(handles=[good_line, medium_line, bad_line, dead_line])
+    #plt.legend(handles=[s1_line, s2_line, s3_line, s4_line])
+    plt.legend(handles=[s2_line, s3_line, s4_line])
 
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
@@ -98,16 +99,16 @@ def put_cells():
     # phase: 0 = bud, 1 = tillering, 2 = grow, 3 = mature, 4 = harvest
     # weather: 0 = sun, 1 = rain
     # Initial quantity cell: Good - 9; Medium - 10; Bad - 1  / Sun - 15; Rain - 5
-    aleatory_cells = [Cell(0, states1[1], 0, 0), Cell(0, states1[0], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[1], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[1], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[1], 0, 0),
+    aleatory_cells = [Cell(0, states1[1], 0, 0), Cell(0, states1[2], 0, 0),
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[3], 0, 0),
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[3], 0, 0),
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[1], 0, 0),
                       Cell(0, states1[1], 0, 0), Cell(0, states1[2], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[1], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[0], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[1], 0, 0),
-                      Cell(0, states1[1], 0, 0), Cell(0, states1[1], 0, 0),
-                      Cell(0, states1[0], 0, 0), Cell(0, states1[1], 0, 0)]
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[2], 0, 0),
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[2], 0, 0),
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[3], 0, 0),
+                      Cell(0, states1[3], 0, 0), Cell(0, states1[2], 0, 0),
+                      Cell(0, states1[2], 0, 0), Cell(0, states1[2], 0, 0)]
 
     for y in range(-1, width + 1):
         for x in range(-1, height + 1):
@@ -197,22 +198,22 @@ put_cells()
 images = []
 
 #just numbers
-# for i in range(0, cycles):
-#     processing()
-#     print("interation:", i)
-#
-# make_graph()
-
-for i in range(0, cycles):  # comment to make infinite
-    make_frames()
-    x = root.winfo_rootx() + canvas.winfo_x()
-    y = root.winfo_rooty() + canvas.winfo_y()
-    xx = x + canvas.winfo_width()
-    yy = y + canvas.winfo_height()
-    images.append(ImageGrab.grab((x, y, xx, yy)))
+for i in range(0, cycles):
+    processing()
+    print("interation:", i)
 
 make_graph()
 
-imageio.mimsave('ac.gif', images, duration=0.5)
-
-root.mainloop()
+# for i in range(0, cycles):  # comment to make infinite
+#     make_frames()
+#     x = root.winfo_rootx() + canvas.winfo_x()
+#     y = root.winfo_rooty() + canvas.winfo_y()
+#     xx = x + canvas.winfo_width()
+#     yy = y + canvas.winfo_height()
+#     images.append(ImageGrab.grab((x, y, xx, yy)))
+#
+# make_graph()
+#
+# imageio.mimsave('ac.gif', images, duration=0.5)
+#
+# root.mainloop()
