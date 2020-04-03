@@ -8,11 +8,20 @@ import numpy as np
 
 # States
 states1 = ["n","Cb", "Cq", "Cc"]
+# Probability
+probability1 = [0.1, 0.6, 0.2, 0.1]
 # Transition matrix
 transitionMatrix1 = [[0.73, 0.03, 0.17, 0.07], [0.11, 0.17, 0.44, 0.28], [0.16, 0.09, 0.54, 0.21], [0.16, 0.05, 0.31, 0.48]]
 
+# States
+#states2 = ["F", "P", "NF"]
+# Probability
+#probability1 = [0.1, 0.6, 0.2, 0.1]
+# Transition matrix
+#transitionMatrix1 = [[0.65, 0.028, 0.322], [0.024, 0.322, 0.654], [0.097, 0.178, 0.725]]
+
 time = 480
-cycles = 48
+cycles = 4
 timeinterval = 30
 
 # Size
@@ -20,10 +29,10 @@ width = 30
 height = 40
 quantCells = width * height
 
-state0 = []
-state1 = []
-state2 = []
-state3 = []
+quantityState0 = []
+quantityState1 = []
+quantityState2 = []
+quantityState3 = []
 
 
 class Cell:
@@ -77,13 +86,13 @@ def make_graph():
     # t = np.linspace(0, time, time)
     # np.arange(0.0, quantCells, 1.0)
 
-    #s1_line, = plt.plot(state0, label=states1[0])
-    s2_line, = plt.plot(state1, label=states1[1], color="brown")
-    s3_line, = plt.plot(state2, label=states1[2], color="red")
-    s4_line, = plt.plot(state3, label=states1[3], color="green")
+    s1_line, = plt.plot(quantityState0, label=states1[0], color="green")
+    s2_line, = plt.plot(quantityState1, label=states1[1], color="yellow")
+    s3_line, = plt.plot(quantityState2, label=states1[2], color="red")
+    s4_line, = plt.plot(quantityState3, label=states1[3], color="black")
 
     #plt.legend(handles=[s1_line, s2_line, s3_line, s4_line])
-    plt.legend(handles=[s2_line, s3_line, s4_line])
+    plt.legend(handles=[s1_line, s2_line, s3_line, s4_line])
 
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
@@ -95,24 +104,11 @@ def make_graph():
 
 
 def put_cells():
-    # state: 0 = good, 1 = medium, 2 = bad, 3 = dead
-    # phase: 0 = bud, 1 = tillering, 2 = grow, 3 = mature, 4 = harvest
-    # weather: 0 = sun, 1 = rain
-    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1  / Sun - 15; Rain - 5
-    aleatory_cells = [Cell(0, states1[1], 0, 0), Cell(0, states1[2], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[3], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[3], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[1], 0, 0),
-                      Cell(0, states1[1], 0, 0), Cell(0, states1[2], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[2], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[2], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[3], 0, 0),
-                      Cell(0, states1[3], 0, 0), Cell(0, states1[2], 0, 0),
-                      Cell(0, states1[2], 0, 0), Cell(0, states1[2], 0, 0)]
-
     for y in range(-1, width + 1):
         for x in range(-1, height + 1):
-            previousGen[x][y] = random.choice(aleatory_cells)
+            state1 = np.random.choice(states1, replace=True, p=probability1)
+            newCell = Cell(0, state1, 0, 0)
+            previousGen[x][y] = newCell
             temporary[x][y] = 0
             cell[x][y] = canvas.create_rectangle((x * 20, y * 20, x * 20 + 20, y * 20 + 20), outline="gray50",
                                                  fill="white")
@@ -154,10 +150,10 @@ def processing():
     archive.write("cells state 2: %d" % cells_state_2 + "\n")
     archive.write("cells state 3: %d" % cells_state_3 + "\n")
     archive.write("----------------------------" + "\n")
-    state0.append(cells_state_0)
-    state1.append(cells_state_1)
-    state2.append(cells_state_2)
-    state3.append(cells_state_3)
+    quantityState0.append(cells_state_0)
+    quantityState1.append(cells_state_1)
+    quantityState2.append(cells_state_2)
+    quantityState3.append(cells_state_3)
 
     for y in range(0, width):
         for x in range(0, height):
