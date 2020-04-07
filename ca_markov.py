@@ -7,14 +7,21 @@ from PIL import Image, ImageGrab
 import numpy as np
 
 # States - quality
-qualityStates = ["Good", "Medium", "Bad", "Dead"]
+states1 = ["Good", "Medium", "Bad", "Dead"]
+# Initial Probability
+probability1 = [0.45, 0.5, 0.05, 0]
 # Transition matrix - quality
-qualityTransitionMatrix = [[0.5, 0.3, 0.2, 0], [0.2, 0.6, 0.2, 0], [0.2, 0.395, 0.395, 0.01], [0, 0, 0, 1]]
+transitionMatrix1 = [[0.6, 0.3, 0.1, 0], [0.2, 0.6, 0.2, 0], [0.3, 0.495, 0.195, 0.01], [0, 0, 0, 1]]
+transitionMatrix11 = [[0.7, 0.25, 0.05, 0], [0.3, 0.55, 0.15, 0], [0.4, 0.445, 0.145, 0.01], [0, 0, 0, 1]]
+transitionMatrix12 = [[0.55, 0.4, 0.05, 0], [0.15, 0.7, 0.15, 0], [0.25, 0.595, 0.145, 0.01], [0, 0, 0, 1]]
+transitionMatrix13 = [[0.55, 0.25, 0.2, 0], [0.15, 0.55, 0.3, 0], [0.25, 0.445, 0.295, 0.01], [0, 0, 0, 1]]
 
 # States - weather
-weatherStates = ["Sun", "Rain"]
+states2 = ["Sun", "Rain"]
+# Initial Probability
+probability2 = [0.75, 0.25]
 # Transition matrix - weather
-weatherTransitionMatrix = [[0.8, 0.2], [0.7, 0.3]]
+transitionMatrix2 = [[0.8, 0.2], [0.7, 0.3]]
 
 time = 480
 cycles = 32
@@ -25,19 +32,19 @@ width = 30
 height = 40
 quantCells = width * height
 
-good = []
-medium = []
-bad = []
-dead = []
+quantityState0 = []
+quantityState1 = []
+quantityState2 = []
+quantityState3 = []
 
 
 class Cell:
 
-    def __init__(self, time, quality, phase, weather):
+    def __init__(self, time, state1, state2, state3):
         self.time = time
-        self.quality = quality
-        self.phase = phase
-        self.weather = weather
+        self.state1 = state1
+        self.state2 = state2
+        self.state3 = state3
 
     def gettime(self):
         return self.time
@@ -45,23 +52,23 @@ class Cell:
     def settime(self, time):
         self.time = time
 
-    def getquality(self):
-        return self.quality
+    def getstate1(self):
+        return self.state1
 
-    def setquality(self, quality):
-        self.quality = quality
+    def setstate1(self, state1):
+        self.state1 = state1
 
-    def getphase(self):
-        return self.phase
+    def getstate2(self):
+        return self.state2
 
-    def setphase(self, phase):
-        self.phase = phase
+    def setstate2(self, state2):
+        self.state2 = state2
 
-    def getweather(self):
-        return self.weather
+    def getstate3(self):
+        return self.state3
 
-    def setweather(self, weather):
-        self.weather = weather
+    def setstate3(self, state3):
+        self.state3 = state3
 
 
 cell = [[0 for row in range(-1, width + 1)] for col in range(-1, height + 1)]
@@ -84,12 +91,12 @@ def make_graph():
     # t = np.linspace(0, time, time)
     # np.arange(0.0, quantCells, 1.0)
 
-    good_line, = plt.plot(good, label='Good')
-    medium_line, = plt.plot(medium, label='Medium')
-    bad_line, = plt.plot(bad, label='Bad')
-    dead_line, = plt.plot(dead, label='Dead')
+    s1_line, = plt.plot(quantityState0, label=states1[0], color="green")
+    s2_line, = plt.plot(quantityState1, label=states1[1], color="yellow")
+    s3_line, = plt.plot(quantityState2, label=states1[2], color="red")
+    s4_line, = plt.plot(quantityState3, label=states1[3], color="black")
 
-    plt.legend(handles=[good_line, medium_line, bad_line, dead_line])
+    plt.legend(handles=[s1_line, s2_line, s3_line, s4_line])
 
     # plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
@@ -101,24 +108,13 @@ def make_graph():
 
 
 def put_cells():
-    # state: 0 = good, 1 = medium, 2 = bad, 3 = dead
-    # phase: 0 = bud, 1 = tillering, 2 = grow, 3 = mature, 4 = harvest
-    # weather: 0 = sun, 1 = rain
-    # Initial quantity cell: Good - 9; Medium - 10; Bad - 1  / Sun - 15; Rain - 5
-    aleatory_cells = [Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[0], 0, weatherStates[0]),
-                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
-                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1]),
-                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
-                      Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[2], 0, weatherStates[0]),
-                      Cell(0, qualityStates[0], 0, weatherStates[1]), Cell(0, qualityStates[1], 0, weatherStates[1]),
-                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[0], 0, weatherStates[0]),
-                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[0]),
-                      Cell(0, qualityStates[1], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1]),
-                      Cell(0, qualityStates[0], 0, weatherStates[0]), Cell(0, qualityStates[1], 0, weatherStates[1])]
-
     for y in range(-1, width + 1):
         for x in range(-1, height + 1):
-            previousGen[x][y] = random.choice(aleatory_cells)
+            state1 = np.random.choice(states1, replace=True, p=probability1)
+            state2 = np.random.choice(states2, replace=True, p=probability2)
+            #state3 = np.random.choice(states3, replace=True, p=probability3)
+            newCell = Cell(0, state1, state2, 0)
+            previousGen[x][y] = newCell
             temporary[x][y] = 0
             cell[x][y] = canvas.create_rectangle((x * 20, y * 20, x * 20 + 20, y * 20 + 20), outline="gray50",
                                                  fill="white")
@@ -134,43 +130,34 @@ def processing():
 
     for y in range(0, width):
         for x in range(0, height):
+            neighbors_state1 = search_state(states1[0], x, y)
+            neighbors_state2 = search_state(states1[1], x, y)
+            neighbors_state3 = search_state(states1[2], x, y)
+            neighbors = [neighbors_state1, neighbors_state2, neighbors_state3]
+            transitionMatrix = updateTransitionMatrix(transitionMatrix1, neighbors)
+
             temporary[x][y] = copy.copy(previousGen[x][y])
             temporary[x][y].settime(temporary[x][y].gettime() + timeinterval)
 
-            # setphase
-            if previousGen[x][y].gettime() == 30:
-                temporary[x][y].setphase(1)
-
-            elif previousGen[x][y].gettime() == 150:
-                temporary[x][y].setphase(2)
-
-            elif previousGen[x][y].gettime() == 270:
-                temporary[x][y].setphase(3)
-
-            elif previousGen[x][y].gettime() == 480:
-                temporary[x][y].setphase(4)
-
-
             # Next state - quality
-            temporary[x][y].setquality(getNewState(qualityStates, qualityTransitionMatrix, previousGen[x][y].getquality()))
+            temporary[x][y].setstate1(getNewState(states1, transitionMatrix1, previousGen[x][y].getstate1()))
             # Next state - weather
-            temporary[x][y].setweather(getNewState(weatherStates, weatherTransitionMatrix, previousGen[x][y].getweather()))
+            temporary[x][y].setstate2(getNewState(states2, transitionMatrix2, previousGen[x][y].getstate2()))
 
-
-            #count states - quality
-            if previousGen[x][y].getquality() == qualityStates[0]:
+            #count state
+            if previousGen[x][y].getstate1() == states1[0]:
                 cells_state_0 += 1
-            elif previousGen[x][y].getquality() == qualityStates[1]:
+            elif previousGen[x][y].getstate1() == states1[1]:
                 cells_state_1 += 1
-            elif previousGen[x][y].getquality() == qualityStates[2]:
+            elif previousGen[x][y].getstate1() == states1[2]:
                 cells_state_2 += 1
-            elif previousGen[x][y].getquality() == qualityStates[3]:
+            elif previousGen[x][y].getstate1() == states1[3]:
                 cells_state_3 += 1
 
             # count states - weather
-            if previousGen[x][y].getweather() == weatherStates[0]:
+            if previousGen[x][y].getstate2() == states2[0]:
                 cells_sun += 1
-            elif previousGen[x][y].getweather() == weatherStates[1]:
+            elif previousGen[x][y].getstate2() == states2[1]:
                 cells_rain += 1
 
 
@@ -180,18 +167,18 @@ def processing():
     content = archive2.readlines()
     archive.write("day: %d" % temporary[0][0].gettime() + "\n")
     archive.write("----------------------------" + "\n")
-    archive.write("cells good: %d" % cells_state_0 + "\n")
-    archive.write("cells medium: %d" % cells_state_1 + "\n")
-    archive.write("cells bad: %d" % cells_state_2 + "\n")
-    archive.write("cells dead: %d" % cells_state_3 + "\n")
+    archive.write("cells state " + states1[0] + ": %d" % cells_state_0 + "\n")
+    archive.write("cells state " + states1[1] + ": %d" % cells_state_1 + "\n")
+    archive.write("cells state " + states1[2] + ": %d" % cells_state_2 + "\n")
+    archive.write("cells state " + states1[3] + ": %d" % cells_state_3 + "\n")
     archive.write("----------------------------" + "\n")
     archive.write("weather sun: %d" % cells_sun + "\n")
     archive.write("weather rain: %d" % cells_rain + "\n")
     archive.write("----------XXXXX------------" + "\n")
-    good.append(cells_state_0)
-    medium.append(cells_state_1)
-    bad.append(cells_state_2)
-    dead.append(cells_state_3)
+    quantityState0.append(cells_state_0)
+    quantityState1.append(cells_state_1)
+    quantityState2.append(cells_state_2)
+    quantityState3.append(cells_state_3)
 
     for y in range(0, width):
         for x in range(0, height):
@@ -210,27 +197,68 @@ def getNewState(states, transitionMatrix, currentState):
     return newState
 
 
+def updateTransitionMatrix(transitionMatrix, neighbors):
+    newTransitionMatrix = transitionMatrix
+
+    if neighbors[0] > 4:
+        newTransitionMatrix = transitionMatrix11
+    elif neighbors[1] > 4:
+        newTransitionMatrix = transitionMatrix12
+    elif neighbors[1] > 4:
+        newTransitionMatrix = transitionMatrix13
+
+    return newTransitionMatrix
+
+
+def search_state(state, a, b):
+    count = 0
+
+    if previousGen[a - 1][b + 1].getstate1() == state:
+        count += 1
+
+    if previousGen[a][b + 1].getstate1() == state:
+        count += 1
+
+    if previousGen[a + 1][b + 1].getstate1() == state:
+        count += 1
+
+    if previousGen[a - 1][b].getstate1() == state:
+        count += 1
+
+    if previousGen[a + 1][b].getstate1() == state:
+        count += 1
+
+    if previousGen[a - 1][b - 1].getstate1() == state:
+        count += 1
+
+    if previousGen[a][b - 1].getstate1() == state:
+        count += 1
+
+    if previousGen[a + 1][b - 1].getstate1() == state:
+        count += 1
+
+    return count
+
+
 def paint_cells():
     for y in range(width):
         for x in range(height):
-            if previousGen[x][y].getquality() == qualityStates[0]:
+            if previousGen[x][y].getstate1() == states1[0]:
                 canvas.itemconfig(cell[x][y], fill="green")
-            elif previousGen[x][y].getquality() == qualityStates[1]:
+            elif previousGen[x][y].getstate1() == states1[1]:
                 canvas.itemconfig(cell[x][y], fill="yellow")
-            elif previousGen[x][y].getquality() == qualityStates[2]:
+            elif previousGen[x][y].getstate1() == states1[2]:
                 canvas.itemconfig(cell[x][y], fill="red")
-            elif previousGen[x][y].getquality() == qualityStates[3]:
+            elif previousGen[x][y].getstate1() == states1[3]:
                 canvas.itemconfig(cell[x][y], fill="black")
-
 
 def paint_cells_weather():
     for y in range(width):
         for x in range(height):
-            if previousGen[x][y].getweather() == weatherStates[0]:
+            if previousGen[x][y].getstate2() == states2[0]:
                 canvas.itemconfig(cell[x][y], fill="yellow")
-            elif previousGen[x][y].getweather() == weatherStates[1]:
+            elif previousGen[x][y].getstate2() == states2[1]:
                 canvas.itemconfig(cell[x][y], fill="blue")
-
 
 def paint_cells_phase():
     for y in range(width):
@@ -246,7 +274,6 @@ def paint_cells_phase():
             elif previousGen[x][y].getphase() == 4:
                 canvas.itemconfig(cell[x][y], fill="#f9ccbd")
 
-
 root = Tk()
 # Original size 800 x 600
 canvas = Canvas(root, width=800, height=600, highlightthickness=0, bd=0, bg='white')
@@ -255,12 +282,14 @@ put_cells()
 
 images = []
 
+#just numbers
 # for i in range(0, cycles):
-#     processing() #just numbers
+#     processing()
 #     print("interation:", i)
 #
 # make_graph()
 
+#image CA
 for i in range(0, cycles):  # comment to make infinite
     make_frames()
     x = root.winfo_rootx() + canvas.winfo_x()
